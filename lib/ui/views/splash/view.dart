@@ -8,9 +8,8 @@ class SplashView extends StatelessWidget {
     return BaseView<SplashViewModel>(
       model: SplashViewModel(),
       onModelReady: (SplashViewModel model) async {
-        //TODO: fetch data from Endpoint
-        Future.delayed(const Duration(seconds: 4));
-        },
+        await model.onReady(context);
+      },
       builder: (BuildContext context, SplashViewModel model, Widget child) =>
           Scaffold(
         body: SafeArea(

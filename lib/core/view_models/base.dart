@@ -11,7 +11,7 @@ class BaseModel with ChangeNotifier {
   }
 
   void goTo(BuildContext context,
-      {String path, bool pushAndReplace = false, dynamic args}) {
+      {@required String path, bool pushAndReplace = false, dynamic args}) {
     if (pushAndReplace) {
       Navigator.pushNamedAndRemoveUntil(
           context, path, (Route<dynamic> route) => false,
