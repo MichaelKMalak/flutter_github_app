@@ -8,6 +8,6 @@ const String initialRoute = 'Splash Screen';
 class Router {
   static dynamic routes() => {
     initialRoute: (BuildContext context) => SplashView(),
-    RoutePaths.Home: (BuildContext context) => HomeView(),
+    RoutePaths.home: (BuildContext context) => HomeView(),
   };
 }

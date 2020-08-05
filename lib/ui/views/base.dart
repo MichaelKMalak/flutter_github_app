@@ -13,7 +13,7 @@ class BaseView<T extends ChangeNotifier> extends StatefulWidget {
   final Widget Function(BuildContext context, T model, Widget child) builder;
   final T model;
   final Widget child;
-  final Function(T) onModelReady;
+  final void Function(T) onModelReady;
 
   @override
   _BaseWidgetState<T> createState() => _BaseWidgetState<T>();

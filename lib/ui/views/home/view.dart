@@ -10,7 +10,7 @@ class HomeView extends StatelessWidget {
       onModelReady: (HomeViewModel model) async {
       },
       builder: (BuildContext context, HomeViewModel model, Widget child) =>
-          Scaffold(
+          const Scaffold(
             body: SafeArea(
               child: Center(
                 child: Text('Home Page'),

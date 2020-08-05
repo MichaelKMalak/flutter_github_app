@@ -11,7 +11,7 @@ class SplashView extends StatelessWidget {
         await model.onReady(context);
       },
       builder: (BuildContext context, SplashViewModel model, Widget child) =>
-          Scaffold(
+          const Scaffold(
         body: SafeArea(
           child: Center(
             child: CircularProgressIndicator(),
