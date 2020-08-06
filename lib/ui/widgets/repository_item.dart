@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mobile_code_challenge_solution/core/models/repository/repository.dart';
-import 'package:mobile_code_challenge_solution/ui/utils/star_count.dart';
+import 'package:mobile_code_challenge_solution/ui/utils/owner_tile.dart';
+import 'package:mobile_code_challenge_solution/ui/utils/star_count_tile.dart';
 
 class RepositoryListItem extends StatefulWidget {
   const RepositoryListItem({
