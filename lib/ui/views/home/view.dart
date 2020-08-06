@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_code_challenge_solution/core/providers/get_repos/provider.dart';
 import 'package:mobile_code_challenge_solution/core/view_models/home/view_model.dart';
 import 'package:mobile_code_challenge_solution/ui/views/base.dart';
+import 'package:mobile_code_challenge_solution/ui/widgets/repository/repository_item.dart';
 import 'package:provider/provider.dart';
 
 class HomeView extends StatelessWidget {
@@ -15,7 +16,18 @@ class HomeView extends StatelessWidget {
           Scaffold(
         body: SafeArea(
           child: Center(
-            child: Text(model.repositories.toString()),
+            child: ListView.separated(
+                separatorBuilder: (context, index) => const Divider(
+                  color: Colors.grey,
+                ),
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                physics: const ClampingScrollPhysics(),
+                itemCount: model.repositories.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return RepositoryListItem(
+                      repository: model.repositories[index]);
+                }),
           ),
         ),
       ),
