@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 Widget buildStarCountTile(int stargazersCount) {
   return Row(
     children: [
       const Icon(Icons.star),
       Text(
-        stargazersCount.toString(),
-        overflow: TextOverflow.clip,
+        NumberFormat.compact().format(stargazersCount),
+        overflow: TextOverflow.ellipsis,
       ),
     ],
   );
