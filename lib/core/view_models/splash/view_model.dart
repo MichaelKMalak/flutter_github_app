@@ -1,14 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mobile_code_challenge_solution/core/constants/routes.dart';
+import 'package:mobile_code_challenge_solution/core/providers/get_repos/provider.dart';
 import 'package:mobile_code_challenge_solution/core/view_models/base.dart';
 
 class SplashViewModel extends BaseModel {
+  SplashViewModel({
+    @required RepositoryProvider repositoriesProvider,
+  })  : _repositoriesProvider = repositoriesProvider;
+
+  final RepositoryProvider _repositoriesProvider;
 
   Future<void> onReady(BuildContext context) async {
     setBusy(true);
-    //TODO: fetch data from Endpoint
-    await Future.delayed(const Duration(seconds: 4));
+    await _repositoriesProvider.getRepositories();
     setBusy(false);
-    goTo(context, path: RoutePaths.Home, pushAndReplace: true);
+    goTo(context, path: RoutePaths.home, pushAndReplace: true);
   }
 }

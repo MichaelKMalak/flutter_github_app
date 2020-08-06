@@ -1,3 +1,3 @@
 class RoutePaths {
-  static const String Home = 'Home Screen';
+  static const String home = 'Home Screen';
 }
