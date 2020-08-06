@@ -15,12 +15,16 @@ class HomeView extends StatelessWidget {
       onModelReady: (HomeViewModel model) async {},
       builder: (BuildContext context, HomeViewModel model, Widget child) =>
           Scaffold(
+        appBar: AppBar(
+          title: const Text('Trending Repos'),
+          centerTitle: true,
+        ),
         body: SafeArea(
           child: Center(
             child: ListView.separated(
                 separatorBuilder: (context, index) => const Divider(
-                  color: Colors.grey,
-                ),
+                      color: Colors.grey,
+                    ),
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 physics: const ClampingScrollPhysics(),

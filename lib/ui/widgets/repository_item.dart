@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:mobile_code_challenge_solution/core/models/repository/repository.dart';
 import 'package:mobile_code_challenge_solution/ui/utils/owner_tile.dart';
 import 'package:mobile_code_challenge_solution/ui/utils/star_count_tile.dart';
+import 'package:mobile_code_challenge_solution/ui/utils/styles.dart';
 
 class RepositoryListItem extends StatefulWidget {
   const RepositoryListItem({
@@ -25,7 +26,7 @@ class _RepositoryListItemState extends State<RepositoryListItem> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(widget.repository.name),
+          Text(widget.repository.name, style: headlineTextStyle,),
           const SizedBox(height: 10,),
           Text(widget.repository.description ?? ''),
           const SizedBox(height: 10,),
