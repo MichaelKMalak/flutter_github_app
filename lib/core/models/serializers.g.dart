@@ -8,6 +8,7 @@ part of serializers;
 
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Repository.serializer)
+      ..add(RepositoryOwner.serializer)
       ..add(SearchResponse.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Repository)]),
