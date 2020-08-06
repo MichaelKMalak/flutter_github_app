@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mobile_code_challenge_solution/core/providers/get_repos/provider.dart';
 import 'package:mobile_code_challenge_solution/core/view_models/repository_list/view_model.dart';
 import 'package:mobile_code_challenge_solution/ui/views/base.dart';
+import 'package:mobile_code_challenge_solution/ui/widgets/repository_item.dart';
 import 'package:provider/provider.dart';
-
-import 'file:///E:/projects/mobile-code-challenge-solution-flutter/lib/ui/widgets/repository_item.dart';
 
 class RepositoryListView extends StatelessWidget {
   @override
