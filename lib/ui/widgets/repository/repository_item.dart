@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mobile_code_challenge_solution/core/models/repository/repository.dart';
+import 'package:mobile_code_challenge_solution/ui/utils/star_count.dart';
 
 class RepositoryListItem extends StatefulWidget {
   const RepositoryListItem({
@@ -19,21 +20,21 @@ class _RepositoryListItemState extends State<RepositoryListItem> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(25.0),
-      child: Row(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(widget.repository.name)
-//          Expanded(
-//            flex: 3,
-//            child: GestureDetector(
-//                onTap: () => _openProductDetails(),
-//                child:
-//                ProductNameResponsive(product: widget.onlineOrderProduct)),
-//          ),
-//          Expanded(
-//            flex: 2,
-//            child: PriceListTile(productModel: widget.onlineOrderProduct),
-//          ),
-//          AddToCartBtn(widget.onlineOrderProduct),
+          Text(widget.repository.name),
+          const SizedBox(height: 10,),
+          Text(widget.repository.description ?? ''),
+          const SizedBox(height: 10,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Expanded(child: Text('author name')),
+              buildStarCount(widget.repository.stargazersCount),
+            ],
+          ),
         ],
       ),
     );
