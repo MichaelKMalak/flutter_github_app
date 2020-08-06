@@ -1,16 +1,24 @@
-import 'dart:collection';
-
-import 'package:flutter/foundation.dart';
-import 'package:mobile_code_challenge_solution/core/models/repository/repository.dart';
-import 'package:mobile_code_challenge_solution/core/providers/get_repos/provider.dart';
+import 'package:flutter/material.dart';
+import 'package:mobile_code_challenge_solution/core/providers/controller/provider.dart';
 import 'package:mobile_code_challenge_solution/core/view_models/base.dart';
 
 class HomeViewModel extends BaseModel {
   HomeViewModel({
-    @required RepositoryProvider repositoryProvider,
-  }) : _repositoryProvider = repositoryProvider;
+    @required ControllerProvider controllerProvider,
+  }) : _controllerProvider = controllerProvider;
 
-  final RepositoryProvider _repositoryProvider;
-  UnmodifiableListView<Repository> get repositories =>
-      _repositoryProvider.repositories;
+  final ControllerProvider _controllerProvider;
+  PageController get homePageController =>
+      _controllerProvider?.homePageController;
+
+  void jumpToPage(int index){
+    _controllerProvider.homePageController.animateToPage(index,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeInOut);
+    updatePageIndex(index);
+  }
+
+  void updatePageIndex(int index){
+    _controllerProvider.updateCurrentIndex(index);
+  }
 }

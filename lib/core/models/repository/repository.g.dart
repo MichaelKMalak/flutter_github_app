@@ -23,6 +23,9 @@ class _$RepositorySerializer implements StructuredSerializer<Repository> {
       'stargazers_count',
       serializers.serialize(object.stargazersCount,
           specifiedType: const FullType(int)),
+      'owner',
+      serializers.serialize(object.owner,
+          specifiedType: const FullType(RepositoryOwner)),
     ];
     if (object.description != null) {
       result
@@ -56,6 +59,11 @@ class _$RepositorySerializer implements StructuredSerializer<Repository> {
           result.stargazersCount = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
+        case 'owner':
+          result.owner.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(RepositoryOwner))
+              as RepositoryOwner);
+          break;
       }
     }
 
@@ -70,17 +78,23 @@ class _$Repository extends Repository {
   final String description;
   @override
   final int stargazersCount;
+  @override
+  final RepositoryOwner owner;
 
   factory _$Repository([void Function(RepositoryBuilder) updates]) =>
       (new RepositoryBuilder()..update(updates)).build();
 
-  _$Repository._({this.name, this.description, this.stargazersCount})
+  _$Repository._(
+      {this.name, this.description, this.stargazersCount, this.owner})
       : super._() {
     if (name == null) {
       throw new BuiltValueNullFieldError('Repository', 'name');
     }
     if (stargazersCount == null) {
       throw new BuiltValueNullFieldError('Repository', 'stargazersCount');
+    }
+    if (owner == null) {
+      throw new BuiltValueNullFieldError('Repository', 'owner');
     }
   }
 
@@ -97,13 +111,16 @@ class _$Repository extends Repository {
     return other is Repository &&
         name == other.name &&
         description == other.description &&
-        stargazersCount == other.stargazersCount;
+        stargazersCount == other.stargazersCount &&
+        owner == other.owner;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, name.hashCode), description.hashCode),
-        stargazersCount.hashCode));
+    return $jf($jc(
+        $jc($jc($jc(0, name.hashCode), description.hashCode),
+            stargazersCount.hashCode),
+        owner.hashCode));
   }
 
   @override
@@ -111,7 +128,8 @@ class _$Repository extends Repository {
     return (newBuiltValueToStringHelper('Repository')
           ..add('name', name)
           ..add('description', description)
-          ..add('stargazersCount', stargazersCount))
+          ..add('stargazersCount', stargazersCount)
+          ..add('owner', owner))
         .toString();
   }
 }
@@ -132,6 +150,11 @@ class RepositoryBuilder implements Builder<Repository, RepositoryBuilder> {
   set stargazersCount(int stargazersCount) =>
       _$this._stargazersCount = stargazersCount;
 
+  RepositoryOwnerBuilder _owner;
+  RepositoryOwnerBuilder get owner =>
+      _$this._owner ??= new RepositoryOwnerBuilder();
+  set owner(RepositoryOwnerBuilder owner) => _$this._owner = owner;
+
   RepositoryBuilder();
 
   RepositoryBuilder get _$this {
@@ -139,6 +162,7 @@ class RepositoryBuilder implements Builder<Repository, RepositoryBuilder> {
       _name = _$v.name;
       _description = _$v.description;
       _stargazersCount = _$v.stargazersCount;
+      _owner = _$v.owner?.toBuilder();
       _$v = null;
     }
     return this;
@@ -159,11 +183,25 @@ class RepositoryBuilder implements Builder<Repository, RepositoryBuilder> {
 
   @override
   _$Repository build() {
-    final _$result = _$v ??
-        new _$Repository._(
-            name: name,
-            description: description,
-            stargazersCount: stargazersCount);
+    _$Repository _$result;
+    try {
+      _$result = _$v ??
+          new _$Repository._(
+              name: name,
+              description: description,
+              stargazersCount: stargazersCount,
+              owner: owner.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'owner';
+        owner.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'Repository', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

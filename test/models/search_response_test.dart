@@ -21,6 +21,10 @@ void main() {
             equals(server.repositoryObj['description']));
         expect(value.items.first.stargazersCount,
             equals(server.repositoryObj['stargazers_count']));
+        expect(value.items.first.owner.name,
+            equals(server.repositoryObj['login']));
+        expect(value.items.first.owner.picture,
+            equals(server.repositoryObj['avatar_url']));
       });
     });
   });
