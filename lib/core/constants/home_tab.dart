@@ -1,0 +1,4 @@
+enum HomeTab {
+  repository,
+  settings,
+}
