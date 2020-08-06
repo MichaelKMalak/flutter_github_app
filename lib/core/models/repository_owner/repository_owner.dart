@@ -5,7 +5,8 @@ import 'package:built_value/serializer.dart';
 
 part 'repository_owner.g.dart';
 
-abstract class RepositoryOwner implements Built<RepositoryOwner, RepositoryOwnerBuilder> {
+abstract class RepositoryOwner
+    implements Built<RepositoryOwner, RepositoryOwnerBuilder> {
   factory RepositoryOwner([void Function(RepositoryOwnerBuilder b) updates]) =
       _$RepositoryOwner;
 
@@ -17,5 +18,6 @@ abstract class RepositoryOwner implements Built<RepositoryOwner, RepositoryOwner
   @BuiltValueField(wireName: 'avatar_url')
   String get picture;
 
-  static Serializer<RepositoryOwner> get serializer => _$repositoryOwnerSerializer;
+  static Serializer<RepositoryOwner> get serializer =>
+      _$repositoryOwnerSerializer;
 }
