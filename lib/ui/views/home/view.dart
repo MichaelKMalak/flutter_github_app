@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mobile_code_challenge_solution/core/providers/get_repos/provider.dart';
 import 'package:mobile_code_challenge_solution/core/view_models/home/view_model.dart';
 import 'package:mobile_code_challenge_solution/ui/views/base.dart';
+import 'package:mobile_code_challenge_solution/ui/views/repository_list/view.dart';
 import 'package:provider/provider.dart';
-
-import 'file:///E:/projects/mobile-code-challenge-solution-flutter/lib/ui/widgets/repository_item.dart';
 
 class HomeView extends StatelessWidget {
   @override
@@ -12,30 +11,45 @@ class HomeView extends StatelessWidget {
     return BaseView<HomeViewModel>(
       model: HomeViewModel(
           repositoryProvider: Provider.of<RepositoryProvider>(context)),
-      onModelReady: (HomeViewModel model) async {},
       builder: (BuildContext context, HomeViewModel model, Widget child) =>
           Scaffold(
-        appBar: AppBar(
-          title: const Text('Trending Repos'),
-          centerTitle: true,
+              resizeToAvoidBottomInset: true,
+              resizeToAvoidBottomPadding: true,
+              bottomNavigationBar: buildBottomNavigationBar(),
+              body: SafeArea(child: getScreen(0))),
+    );
+  }
+
+  Widget getScreen(int index) {
+    switch (index) {
+      case 0:
+        return RepositoryListView();
+      case 1:
+        return const Center(
+          child: Text('settings'),
+        );
+    }
+    return null;
+  }
+
+  BottomNavigationBar buildBottomNavigationBar() {
+    return BottomNavigationBar(
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.star, size: 32),
+          title: Text('Trending'),
         ),
-        body: SafeArea(
-          child: Center(
-            child: ListView.separated(
-                separatorBuilder: (context, index) => const Divider(
-                      color: Colors.grey,
-                    ),
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                physics: const ClampingScrollPhysics(),
-                itemCount: model.repositories.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return RepositoryListItem(
-                      repository: model.repositories[index]);
-                }),
-          ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.settings, size: 32),
+          title: Text('Settings'),
         ),
-      ),
+      ],
+      selectedItemColor: Colors.blue,
+      backgroundColor: Colors.grey.shade200,
+      currentIndex: 0,
+      selectedFontSize: 12,
+      unselectedFontSize: 12,
+      //onTap: _onItemTapped,
     );
   }
 }

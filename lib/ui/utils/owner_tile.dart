@@ -5,8 +5,8 @@ Widget buildOwnerTile(RepositoryOwner owner) {
   return Row(
     children: [
       Container(
-          width: 50,
-          height: 50,
+          width: 32,
+          height: 32,
           decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
