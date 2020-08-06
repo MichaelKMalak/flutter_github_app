@@ -31,8 +31,8 @@ class _RepositoryListItemState extends State<RepositoryListItem> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Expanded(child: Text('author name')),
-              buildStarCount(widget.repository.stargazersCount),
+              buildOwnerTile(widget.repository.owner),
+              buildStarCountTile(widget.repository.stargazersCount),
             ],
           ),
         ],
