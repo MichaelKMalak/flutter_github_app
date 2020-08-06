@@ -12,15 +12,15 @@ void main() {
 
       //mocking the mobile side
       final searchResponseModel =
-          compute(SearchResponse.fromJsonStr, server.responseJsonStr);
+          compute(SearchResponse.fromJson, server.responseJsonObj);
 
       searchResponseModel.then((value) {
         expect(
-            value.items.first.name, equals(server.repositoryJsonObj['name']));
+            value.items.first.name, equals(server.repositoryObj['name']));
         expect(value.items.first.description,
-            equals(server.repositoryJsonObj['description']));
+            equals(server.repositoryObj['description']));
         expect(value.items.first.stargazersCount,
-            equals(server.repositoryJsonObj['stargazers_count']));
+            equals(server.repositoryObj['stargazers_count']));
       });
     });
   });

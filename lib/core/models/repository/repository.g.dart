@@ -20,14 +20,16 @@ class _$RepositorySerializer implements StructuredSerializer<Repository> {
     final result = <Object>[
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'description',
-      serializers.serialize(object.description,
-          specifiedType: const FullType(String)),
       'stargazers_count',
       serializers.serialize(object.stargazersCount,
           specifiedType: const FullType(int)),
     ];
-
+    if (object.description != null) {
+      result
+        ..add('description')
+        ..add(serializers.serialize(object.description,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -76,9 +78,6 @@ class _$Repository extends Repository {
       : super._() {
     if (name == null) {
       throw new BuiltValueNullFieldError('Repository', 'name');
-    }
-    if (description == null) {
-      throw new BuiltValueNullFieldError('Repository', 'description');
     }
     if (stargazersCount == null) {
       throw new BuiltValueNullFieldError('Repository', 'stargazersCount');

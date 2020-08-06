@@ -1,5 +1,6 @@
 library search_response;
 
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:built_collection/built_collection.dart';
@@ -13,21 +14,18 @@ part 'search_response.g.dart';
 
 abstract class SearchResponse
     implements Built<SearchResponse, SearchResponseBuilder> {
-  factory SearchResponse([Function(SearchResponseBuilder b) updates]) = _$SearchResponse;
+  factory SearchResponse([void Function(SearchResponseBuilder b) updates]) =
+      _$SearchResponse;
 
   SearchResponse._();
 
   BuiltList<Repository> get items;
 
-  static SearchResponse fromJsonStr(String jsonStr) {
+  static FutureOr<SearchResponse> fromJson(dynamic obj) {
     return serializers.deserializeWith(
-        SearchResponse.serializer, json.decode(jsonStr));
+        SearchResponse.serializer, json.decode(utf8.decode(obj)));
   }
 
-  static SearchResponse fromJsonMap(Map<String, dynamic> jsonObj) {
-    return serializers.deserializeWith(
-        SearchResponse.serializer, jsonObj);
-  }
-
-  static Serializer<SearchResponse> get serializer => _$searchResponseSerializer;
+  static Serializer<SearchResponse> get serializer =>
+      _$searchResponseSerializer;
 }
