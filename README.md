@@ -4,19 +4,23 @@
 
 This is a solution to the mobile code challenge by [gemography](https://www.gemography.com/). 
 
+## Screenshot
+<img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/screenshots/MVP_1.png" width="350" />
+
+
 ## Repository branches
 * dev
     * The current tip-of-tree, absolute latest cutting edge build. 
 * master
     * The latest developed functional features.
+* master-friday-08072020
+    * Last updated on Friday 08/07/2020 
+    * Following the provided mock up design exactly
 
 ## About this project
 The task is to implement a small app that will list the most starred Github repos that were created in the last 30 days by fetching the sorted JSON data directly from the Github API.
 
-## Screenshot
-<img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/screenshots/MVP_1.png" width="350" />
-
-### What has implemented
+### What has been implemented
 The [basic features](https://github.com/gemography/mobile-coding-challenge) that are fulfilled include:
  
 1. List the most starred Github repos that were created in the last 30 days.
@@ -27,11 +31,11 @@ The [basic features](https://github.com/gemography/mobile-coding-challenge) that
     * Numbers of stars for the repo. 
     * Username and avatar of the owner. 
 
-Additional Features
+Additional Features:
 1. Keep scrolling and new results should appear (pagination)
 2. Pull to refresh
 
-### An alternative way to view issues
+### An alternative way to view this repository issues
 
 You can check the [milestones](https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/milestones) or the [project where issues' statuses are tracked](https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/projects/1).
 
@@ -100,6 +104,7 @@ The lib folder is divided into two folders. Core and ui. Core contains all the f
 
 ## Notes
 1. The api key is publicly available, so I didn't setup an env_secret for it.
+2. I tried to follow the provided mock up exactly so I didn't make any improvements in terms of UI design
 
 ## What could be improved?
 1. More Unit testing.
