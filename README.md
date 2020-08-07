@@ -23,17 +23,17 @@ The task is to implement a small app that will list the most starred Github repo
 ### What has been implemented
 The [basic features](https://github.com/gemography/mobile-coding-challenge) that are fulfilled include:
  
-1. List the most starred Github repos that were created in the last 30 days.
-2. View One repository per row.
-3. Repo details include
+- [x] As a User I should be able to list the most starred Github repos that were created in the last 30 days.
+- [x] As a User I should see the results as a list. One repository per row.
+- [x] As a User I should be able to see for each repo/row the following details :
     * Repository name
     * Repository description 
     * Numbers of stars for the repo. 
     * Username and avatar of the owner. 
 
 Additional Features:
-1. Keep scrolling and new results should appear (pagination)
-2. Pull to refresh
+- [x] As a User I should be able to keep scrolling and new results should appear (pagination).
+- [x] As a User I should be able to refresh by pulling the list downwards.
 
 ### An alternative way to view this repository issues
 
