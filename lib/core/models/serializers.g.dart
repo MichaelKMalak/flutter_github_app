@@ -9,7 +9,9 @@ part of serializers;
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Repository.serializer)
       ..add(RepositoryOwner.serializer)
+      ..add(SearchFilter.serializer)
       ..add(SearchResponse.serializer)
+      ..add(SortType.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Repository)]),
           () => new ListBuilder<Repository>()))
