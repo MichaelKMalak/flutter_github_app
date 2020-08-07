@@ -18,10 +18,10 @@ The [basic requirements](https://github.com/gemography/mobile-coding-challenge) 
 1. List the most starred Github repos that were created in the last 30 days.
 2. View One repository per row.
 3. Repo details include
-  - Repository name
-  - Repository description 
-  - Numbers of stars for the repo. 
-  - Username and avatar of the owner. 
+    * Repository name
+    * Repository description 
+    * Numbers of stars for the repo. 
+    * Username and avatar of the owner. 
 4. [BONUS] Keep scrolling and new results should appear (pagination).
 
 ## Folder Structure
