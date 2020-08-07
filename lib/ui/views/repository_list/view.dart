@@ -21,24 +21,27 @@ class RepositoryListView extends StatelessWidget {
         ),
         body: SafeArea(
           child: Center(
-            child: LoadMore(
-              isFinish: model.isFinished,
-              onLoadMore: model.loadMore,
-              whenEmptyLoad: false,
-              delegate: const DefaultLoadMoreDelegate(),
-              textBuilder: DefaultLoadMoreTextBuilder.english,
-              child: ListView.separated(
-                  separatorBuilder: (context, index) => const Divider(
-                        color: Colors.grey,
-                      ),
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  physics: const ClampingScrollPhysics(),
-                  itemCount: model.repositories.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return RepositoryListItem(
-                        repository: model.repositories[index]);
-                  }),
+            child: RefreshIndicator(
+              onRefresh: model.refresh,
+              child: LoadMore(
+                isFinish: model.isFinished,
+                onLoadMore: model.loadMore,
+                whenEmptyLoad: false,
+                delegate: const DefaultLoadMoreDelegate(),
+                textBuilder: DefaultLoadMoreTextBuilder.english,
+                child: ListView.separated(
+                    separatorBuilder: (context, index) => const Divider(
+                          color: Colors.grey,
+                        ),
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    physics: const ClampingScrollPhysics(),
+                    itemCount: model.repositories.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return RepositoryListItem(
+                          repository: model.repositories[index]);
+                    }),
+              ),
             ),
           ),
         ),

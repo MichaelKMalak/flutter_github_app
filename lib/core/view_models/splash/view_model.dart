@@ -12,7 +12,7 @@ class SplashViewModel extends BaseModel {
 
   Future<void> onReady(BuildContext context) async {
     setBusy(true);
-    await _repositoryProvider.getMoreRepositories();
+    await _repositoryProvider.getRepositories();
     setBusy(false);
     goTo(context, path: RoutePaths.home, pushAndReplace: true);
   }

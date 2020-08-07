@@ -16,7 +16,7 @@ class RepositoryProvider with ChangeNotifier {
 
   bool get isFinished => repositories.length >= _searchResponse.totalCount;
 
-  int currentPage = 0;
+  int currentPage;
 
   SearchFilter defaultSearchFilter(int _currentPage) =>
       SearchFilter((SearchFilterBuilder b) => b
@@ -28,8 +28,24 @@ class RepositoryProvider with ChangeNotifier {
     final searchFilter = defaultSearchFilter(currentPage);
     final apiResponse = await _api.getRepositories(searchFilter);
     if (apiResponse != null) {
-      _searchResponse = _searchResponse.rebuild((b) =>
-      b..items.addAll(apiResponse.items));
+      concatNewRepositories(apiResponse);
+      currentPage++;
+      return true;
+    }
+    return false;
+  }
+
+  SearchResponse concatNewRepositories(SearchResponse apiResponse) {
+    return _searchResponse =
+        _searchResponse.rebuild((b) => b..items.addAll(apiResponse.items));
+  }
+
+  Future<bool> getRepositories() async {
+    currentPage = 0;
+    final searchFilter = defaultSearchFilter(currentPage);
+    final apiResponse = await _api.getRepositories(searchFilter);
+    if (apiResponse != null) {
+      _searchResponse = apiResponse;
       currentPage++;
       return true;
     }

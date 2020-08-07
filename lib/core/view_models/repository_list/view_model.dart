@@ -26,4 +26,15 @@ class RepositoryListViewModel extends BaseModel {
       return false;
     }
   }
+
+  Future<bool> refresh() async {
+    setBusy(true);
+    final success = await _repositoryProvider.getRepositories();
+    setBusy(false);
+    if (success) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
