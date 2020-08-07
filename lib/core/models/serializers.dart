@@ -12,8 +12,6 @@ import 'package:mobile_code_challenge_solution/core/models/search_response/searc
 part 'serializers.g.dart';
 
 @SerializersFor([
-  OrderType,
-  SearchFilter,
   RepositoryOwner,
   Repository,
   SearchResponse

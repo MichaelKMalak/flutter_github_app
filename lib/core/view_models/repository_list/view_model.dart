@@ -13,4 +13,6 @@ class RepositoryListViewModel extends BaseModel {
   final RepositoryProvider _repositoryProvider;
   UnmodifiableListView<Repository> get repositories =>
       _repositoryProvider.repositories;
+
+  int get totalRepoCount => _repositoryProvider.totalRepoCount;
 }

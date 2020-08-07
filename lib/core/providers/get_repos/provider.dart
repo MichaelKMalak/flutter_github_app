@@ -12,6 +12,8 @@ class RepositoryProvider with ChangeNotifier {
   UnmodifiableListView<Repository> get repositories =>
       UnmodifiableListView(_searchResponse.items);
 
+  int get totalRepoCount => _searchResponse.totalCount;
+
   Future<bool> getRepositories(SearchFilter searchFilter) async {
     final apiResponse = await _api.getRepositories(searchFilter);
     if (apiResponse != null) {

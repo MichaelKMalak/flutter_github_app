@@ -6,56 +6,6 @@ part of search_filter;
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<SearchFilter> _$searchFilterSerializer =
-    new _$SearchFilterSerializer();
-
-class _$SearchFilterSerializer implements StructuredSerializer<SearchFilter> {
-  @override
-  final Iterable<Type> types = const [SearchFilter, _$SearchFilter];
-  @override
-  final String wireName = 'SearchFilter';
-
-  @override
-  Iterable<Object> serialize(Serializers serializers, SearchFilter object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
-      'order',
-      serializers.serialize(object.orderType,
-          specifiedType: const FullType(OrderType)),
-      'no_days',
-      serializers.serialize(object.numOfDaysAgo,
-          specifiedType: const FullType(int)),
-    ];
-
-    return result;
-  }
-
-  @override
-  SearchFilter deserialize(Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = new SearchFilterBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final dynamic value = iterator.current;
-      switch (key) {
-        case 'order':
-          result.orderType = serializers.deserialize(value,
-              specifiedType: const FullType(OrderType)) as OrderType;
-          break;
-        case 'no_days':
-          result.numOfDaysAgo = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
 class _$SearchFilter extends SearchFilter {
   @override
   final OrderType orderType;
