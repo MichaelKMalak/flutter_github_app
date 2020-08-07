@@ -76,7 +76,7 @@ The lib folder is divided into two folders. Core and ui. Core contains all the f
     * Providers will NOT be passed in through app level global provider, unless it's required by more than 1 view in the app architecture (e.g. Users information).
     * Providers will perform all the actual work. Api class will request and serialize data. 
 
-* Relationsip between BaseView and view_model
+* Relationship between BaseView and view_model
     * This architecture setup should easily support calling functions when a new view is shown without having to convert everything to a stateful widget. To achieve this, the BaseView is converted into a stateful widget to use the onInit to pass the view_model back to use in a callback function that we can execute on. This will store the view_model locally in the state and in the initState call we'll check if we have a callback.
 
 ## Adding another model
