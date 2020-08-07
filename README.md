@@ -13,7 +13,11 @@ This is a solution to the mobile code challenge by [gemography](https://www.gemo
 ## About this project
 The task is to implement a small app that will list the most starred Github repos that were created in the last 30 days by fetching the sorted JSON data directly from the Github API.
 
-The [basic requirements](https://github.com/gemography/mobile-coding-challenge) include:
+## Screenshot
+<img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/screenshots/MVP_1.png" width="350" />
+
+### What has implemented
+The [basic features](https://github.com/gemography/mobile-coding-challenge) that are fulfilled include:
  
 1. List the most starred Github repos that were created in the last 30 days.
 2. View One repository per row.
@@ -22,7 +26,14 @@ The [basic requirements](https://github.com/gemography/mobile-coding-challenge) 
     * Repository description 
     * Numbers of stars for the repo. 
     * Username and avatar of the owner. 
-4. [BONUS] Keep scrolling and new results should appear (pagination).
+
+Additional Features
+1. Keep scrolling and new results should appear (pagination)
+2. Pull to refresh
+
+### An alternative way to view issues
+
+You can check the [milestones](https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/milestones) or the [project where issues' statuses are tracked](https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/projects/1).
 
 ## Folder Structure
 ```bash
@@ -98,12 +109,22 @@ The lib folder is divided into two folders. Core and ui. Core contains all the f
 5. Filter the repositories.
 6. Add some repositories to favorite list.
 
+## Plugins used ##
+  - intl: ^0.16.1 
+  - provider: ^4.3.1
+  - pedantic: ^1.9.0
+  - dio: ^3.0.9
+  - built_value: ^7.1.0
+  - built_collection: ^4.3.2
+  - loadmore: ^1.0.4
+  
 ## How to run ##
-  - Run `flutter packages get` first to download the dependencies.
+  - Run `flutter channel` and make sure you are on flutter's *stable channel*.
+  - Run `flutter packages get` to download pubspec dependencies.
+  - Run `flutter clean` for most of first run errors you may face.
   - Run `flutter test` to execute tests.
   - Run `flutter run` to try it live on running emulator or usb connected device.
+  - You can target a specific device to run by run `flutter devices` and getting the id and running `flutter run -d <device_id>`.
   - Run `flutter build apk` to generate APK file.
   - Run `flutter build ios` to package iOS app.
   
-## Screenshot
-<img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/screenshots/MVP_1.png" width="350" />
