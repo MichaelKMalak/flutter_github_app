@@ -11,10 +11,10 @@ void main() {
 
       final searchFilter = SearchFilter((SearchFilterBuilder b) => b
         ..numOfDaysAgo = sortAndFilter.numOfDaysAgo
-        ..sortType = sortAndFilter.sortType);
+        ..orderType = sortAndFilter.orderType);
 
       expect(searchFilter.toQueryStr(),
-          '''?q=created:>${getDateXDaysAgo(sortAndFilter.numOfDaysAgo)}&sort=stars&order=${sortAndFilter.sortType.name}''');
+          '''?q=created:>${getDateXDaysAgo(sortAndFilter.numOfDaysAgo)}&sort=stars&order=${sortAndFilter.orderType.name}''');
     });
   });
 }

@@ -19,9 +19,9 @@ class _$SearchFilterSerializer implements StructuredSerializer<SearchFilter> {
   Iterable<Object> serialize(Serializers serializers, SearchFilter object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'sort',
-      serializers.serialize(object.sortType,
-          specifiedType: const FullType(SortType)),
+      'order',
+      serializers.serialize(object.orderType,
+          specifiedType: const FullType(OrderType)),
       'no_days',
       serializers.serialize(object.numOfDaysAgo,
           specifiedType: const FullType(int)),
@@ -41,9 +41,9 @@ class _$SearchFilterSerializer implements StructuredSerializer<SearchFilter> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'sort':
-          result.sortType = serializers.deserialize(value,
-              specifiedType: const FullType(SortType)) as SortType;
+        case 'order':
+          result.orderType = serializers.deserialize(value,
+              specifiedType: const FullType(OrderType)) as OrderType;
           break;
         case 'no_days':
           result.numOfDaysAgo = serializers.deserialize(value,
@@ -58,16 +58,16 @@ class _$SearchFilterSerializer implements StructuredSerializer<SearchFilter> {
 
 class _$SearchFilter extends SearchFilter {
   @override
-  final SortType sortType;
+  final OrderType orderType;
   @override
   final int numOfDaysAgo;
 
   factory _$SearchFilter([void Function(SearchFilterBuilder) updates]) =>
       (new SearchFilterBuilder()..update(updates)).build();
 
-  _$SearchFilter._({this.sortType, this.numOfDaysAgo}) : super._() {
-    if (sortType == null) {
-      throw new BuiltValueNullFieldError('SearchFilter', 'sortType');
+  _$SearchFilter._({this.orderType, this.numOfDaysAgo}) : super._() {
+    if (orderType == null) {
+      throw new BuiltValueNullFieldError('SearchFilter', 'orderType');
     }
     if (numOfDaysAgo == null) {
       throw new BuiltValueNullFieldError('SearchFilter', 'numOfDaysAgo');
@@ -85,19 +85,19 @@ class _$SearchFilter extends SearchFilter {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is SearchFilter &&
-        sortType == other.sortType &&
+        orderType == other.orderType &&
         numOfDaysAgo == other.numOfDaysAgo;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, sortType.hashCode), numOfDaysAgo.hashCode));
+    return $jf($jc($jc(0, orderType.hashCode), numOfDaysAgo.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('SearchFilter')
-          ..add('sortType', sortType)
+          ..add('orderType', orderType)
           ..add('numOfDaysAgo', numOfDaysAgo))
         .toString();
   }
@@ -107,9 +107,9 @@ class SearchFilterBuilder
     implements Builder<SearchFilter, SearchFilterBuilder> {
   _$SearchFilter _$v;
 
-  SortType _sortType;
-  SortType get sortType => _$this._sortType;
-  set sortType(SortType sortType) => _$this._sortType = sortType;
+  OrderType _orderType;
+  OrderType get orderType => _$this._orderType;
+  set orderType(OrderType orderType) => _$this._orderType = orderType;
 
   int _numOfDaysAgo;
   int get numOfDaysAgo => _$this._numOfDaysAgo;
@@ -119,7 +119,7 @@ class SearchFilterBuilder
 
   SearchFilterBuilder get _$this {
     if (_$v != null) {
-      _sortType = _$v.sortType;
+      _orderType = _$v.orderType;
       _numOfDaysAgo = _$v.numOfDaysAgo;
       _$v = null;
     }
@@ -142,7 +142,7 @@ class SearchFilterBuilder
   @override
   _$SearchFilter build() {
     final _$result = _$v ??
-        new _$SearchFilter._(sortType: sortType, numOfDaysAgo: numOfDaysAgo);
+        new _$SearchFilter._(orderType: orderType, numOfDaysAgo: numOfDaysAgo);
     replace(_$result);
     return _$result;
   }
