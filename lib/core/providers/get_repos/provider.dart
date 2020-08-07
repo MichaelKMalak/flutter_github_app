@@ -30,14 +30,17 @@ class RepositoryProvider with ChangeNotifier {
     if (apiResponse != null) {
       concatNewRepositories(apiResponse);
       currentPage++;
+      notifyListeners();
       return true;
     }
     return false;
   }
 
-  SearchResponse concatNewRepositories(SearchResponse apiResponse) {
-    return _searchResponse =
-        _searchResponse.rebuild((b) => b..items.addAll(apiResponse.items));
+  void concatNewRepositories(SearchResponse apiResponse) {
+    final _addedItems =
+        apiResponse.items.takeWhile((t) => !_searchResponse.items.contains(t));
+    _searchResponse =
+        _searchResponse.rebuild((b) => b..items.addAll(_addedItems));
   }
 
   Future<bool> getRepositories() async {
@@ -47,6 +50,7 @@ class RepositoryProvider with ChangeNotifier {
     if (apiResponse != null) {
       _searchResponse = apiResponse;
       currentPage++;
+      notifyListeners();
       return true;
     }
     return false;

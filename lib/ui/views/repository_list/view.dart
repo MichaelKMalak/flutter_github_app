@@ -26,8 +26,8 @@ class RepositoryListView extends StatelessWidget {
               child: LoadMore(
                 isFinish: model.isFinished,
                 onLoadMore: model.loadMore,
-                whenEmptyLoad: false,
-                delegate: const DefaultLoadMoreDelegate(),
+                //whenEmptyLoad: false,
+                //delegate: const DefaultLoadMoreDelegate(),
                 textBuilder: DefaultLoadMoreTextBuilder.english,
                 child: ListView.separated(
                     separatorBuilder: (context, index) => const Divider(
