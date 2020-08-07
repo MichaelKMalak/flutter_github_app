@@ -6,8 +6,8 @@ import 'package:mobile_code_challenge_solution/core/models/search_filter/search_
 import 'package:mobile_code_challenge_solution/core/models/search_response/search_response.dart';
 
 class GetReposApi {
-  Response<dynamic> response;
   Dio client = Dio();
+  Response<dynamic> response;
 
   Future<SearchResponse> getRepositories(SearchFilter searchFilter) async {
     try {
@@ -32,9 +32,9 @@ class GetReposApi {
       }
     } on DioError catch (e) {
       print(e.toString());
-      return null;
     } finally {
       client.clear();
     }
+    return null;
   }
 }

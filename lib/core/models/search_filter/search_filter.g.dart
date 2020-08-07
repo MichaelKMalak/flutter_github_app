@@ -6,71 +6,27 @@ part of search_filter;
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<SearchFilter> _$searchFilterSerializer =
-    new _$SearchFilterSerializer();
-
-class _$SearchFilterSerializer implements StructuredSerializer<SearchFilter> {
-  @override
-  final Iterable<Type> types = const [SearchFilter, _$SearchFilter];
-  @override
-  final String wireName = 'SearchFilter';
-
-  @override
-  Iterable<Object> serialize(Serializers serializers, SearchFilter object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
-      'order',
-      serializers.serialize(object.orderType,
-          specifiedType: const FullType(OrderType)),
-      'no_days',
-      serializers.serialize(object.numOfDaysAgo,
-          specifiedType: const FullType(int)),
-    ];
-
-    return result;
-  }
-
-  @override
-  SearchFilter deserialize(Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = new SearchFilterBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final dynamic value = iterator.current;
-      switch (key) {
-        case 'order':
-          result.orderType = serializers.deserialize(value,
-              specifiedType: const FullType(OrderType)) as OrderType;
-          break;
-        case 'no_days':
-          result.numOfDaysAgo = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
 class _$SearchFilter extends SearchFilter {
   @override
   final OrderType orderType;
   @override
   final int numOfDaysAgo;
+  @override
+  final int requestedPage;
 
   factory _$SearchFilter([void Function(SearchFilterBuilder) updates]) =>
       (new SearchFilterBuilder()..update(updates)).build();
 
-  _$SearchFilter._({this.orderType, this.numOfDaysAgo}) : super._() {
+  _$SearchFilter._({this.orderType, this.numOfDaysAgo, this.requestedPage})
+      : super._() {
     if (orderType == null) {
       throw new BuiltValueNullFieldError('SearchFilter', 'orderType');
     }
     if (numOfDaysAgo == null) {
       throw new BuiltValueNullFieldError('SearchFilter', 'numOfDaysAgo');
+    }
+    if (requestedPage == null) {
+      throw new BuiltValueNullFieldError('SearchFilter', 'requestedPage');
     }
   }
 
@@ -86,19 +42,22 @@ class _$SearchFilter extends SearchFilter {
     if (identical(other, this)) return true;
     return other is SearchFilter &&
         orderType == other.orderType &&
-        numOfDaysAgo == other.numOfDaysAgo;
+        numOfDaysAgo == other.numOfDaysAgo &&
+        requestedPage == other.requestedPage;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, orderType.hashCode), numOfDaysAgo.hashCode));
+    return $jf($jc($jc($jc(0, orderType.hashCode), numOfDaysAgo.hashCode),
+        requestedPage.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('SearchFilter')
           ..add('orderType', orderType)
-          ..add('numOfDaysAgo', numOfDaysAgo))
+          ..add('numOfDaysAgo', numOfDaysAgo)
+          ..add('requestedPage', requestedPage))
         .toString();
   }
 }
@@ -115,12 +74,17 @@ class SearchFilterBuilder
   int get numOfDaysAgo => _$this._numOfDaysAgo;
   set numOfDaysAgo(int numOfDaysAgo) => _$this._numOfDaysAgo = numOfDaysAgo;
 
+  int _requestedPage;
+  int get requestedPage => _$this._requestedPage;
+  set requestedPage(int requestedPage) => _$this._requestedPage = requestedPage;
+
   SearchFilterBuilder();
 
   SearchFilterBuilder get _$this {
     if (_$v != null) {
       _orderType = _$v.orderType;
       _numOfDaysAgo = _$v.numOfDaysAgo;
+      _requestedPage = _$v.requestedPage;
       _$v = null;
     }
     return this;
@@ -142,7 +106,10 @@ class SearchFilterBuilder
   @override
   _$SearchFilter build() {
     final _$result = _$v ??
-        new _$SearchFilter._(orderType: orderType, numOfDaysAgo: numOfDaysAgo);
+        new _$SearchFilter._(
+            orderType: orderType,
+            numOfDaysAgo: numOfDaysAgo,
+            requestedPage: requestedPage);
     replace(_$result);
     return _$result;
   }

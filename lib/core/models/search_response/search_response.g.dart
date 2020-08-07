@@ -20,6 +20,9 @@ class _$SearchResponseSerializer
   Iterable<Object> serialize(Serializers serializers, SearchResponse object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
+      'total_count',
+      serializers.serialize(object.totalCount,
+          specifiedType: const FullType(int)),
       'items',
       serializers.serialize(object.items,
           specifiedType:
@@ -41,6 +44,10 @@ class _$SearchResponseSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
+        case 'total_count':
+          result.totalCount = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
         case 'items':
           result.items.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -56,12 +63,17 @@ class _$SearchResponseSerializer
 
 class _$SearchResponse extends SearchResponse {
   @override
+  final int totalCount;
+  @override
   final BuiltList<Repository> items;
 
   factory _$SearchResponse([void Function(SearchResponseBuilder) updates]) =>
       (new SearchResponseBuilder()..update(updates)).build();
 
-  _$SearchResponse._({this.items}) : super._() {
+  _$SearchResponse._({this.totalCount, this.items}) : super._() {
+    if (totalCount == null) {
+      throw new BuiltValueNullFieldError('SearchResponse', 'totalCount');
+    }
     if (items == null) {
       throw new BuiltValueNullFieldError('SearchResponse', 'items');
     }
@@ -78,17 +90,21 @@ class _$SearchResponse extends SearchResponse {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is SearchResponse && items == other.items;
+    return other is SearchResponse &&
+        totalCount == other.totalCount &&
+        items == other.items;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, items.hashCode));
+    return $jf($jc($jc(0, totalCount.hashCode), items.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('SearchResponse')..add('items', items))
+    return (newBuiltValueToStringHelper('SearchResponse')
+          ..add('totalCount', totalCount)
+          ..add('items', items))
         .toString();
   }
 }
@@ -96,6 +112,10 @@ class _$SearchResponse extends SearchResponse {
 class SearchResponseBuilder
     implements Builder<SearchResponse, SearchResponseBuilder> {
   _$SearchResponse _$v;
+
+  int _totalCount;
+  int get totalCount => _$this._totalCount;
+  set totalCount(int totalCount) => _$this._totalCount = totalCount;
 
   ListBuilder<Repository> _items;
   ListBuilder<Repository> get items =>
@@ -106,6 +126,7 @@ class SearchResponseBuilder
 
   SearchResponseBuilder get _$this {
     if (_$v != null) {
+      _totalCount = _$v.totalCount;
       _items = _$v.items?.toBuilder();
       _$v = null;
     }
@@ -129,7 +150,8 @@ class SearchResponseBuilder
   _$SearchResponse build() {
     _$SearchResponse _$result;
     try {
-      _$result = _$v ?? new _$SearchResponse._(items: items.build());
+      _$result = _$v ??
+          new _$SearchResponse._(totalCount: totalCount, items: items.build());
     } catch (_) {
       String _$failedField;
       try {
