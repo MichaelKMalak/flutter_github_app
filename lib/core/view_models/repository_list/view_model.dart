@@ -14,5 +14,16 @@ class RepositoryListViewModel extends BaseModel {
   UnmodifiableListView<Repository> get repositories =>
       _repositoryProvider.repositories;
 
-  int get totalRepoCount => _repositoryProvider.totalRepoCount;
+  bool get isFinished => _repositoryProvider.isFinished;
+
+  Future<bool> loadMore() async {
+    setBusy(true);
+    final success = await _repositoryProvider.getMoreRepositories();
+    setBusy(false);
+    if (success) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

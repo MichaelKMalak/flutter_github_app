@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+import 'package:mobile_code_challenge_solution/core/constants/defaults.dart';
 import 'package:mobile_code_challenge_solution/core/models/repository/repository.dart';
 import 'package:mobile_code_challenge_solution/core/models/search_filter/search_filter.dart';
 import 'package:mobile_code_challenge_solution/core/models/search_response/search_response.dart';
@@ -13,14 +14,22 @@ class RepositoryProvider with ChangeNotifier {
   UnmodifiableListView<Repository> get repositories =>
       UnmodifiableListView(_searchResponse.items);
 
-  int get totalRepoCount => _searchResponse.totalCount;
+  bool get isFinished => repositories.length >= _searchResponse.totalCount;
 
   int currentPage = 0;
 
-  Future<bool> getRepositories(SearchFilter searchFilter) async {
+  SearchFilter defaultSearchFilter(int _currentPage) =>
+      SearchFilter((SearchFilterBuilder b) => b
+        ..numOfDaysAgo = numOfDaysAgoByDefault
+        ..orderType = orderTypeByDefault
+        ..requestedPage = _currentPage);
+
+  Future<bool> getMoreRepositories() async {
+    final searchFilter = defaultSearchFilter(currentPage);
     final apiResponse = await _api.getRepositories(searchFilter);
     if (apiResponse != null) {
-      _searchResponse = apiResponse;
+      _searchResponse = _searchResponse.rebuild((b) =>
+      b..items.addAll(apiResponse.items));
       currentPage++;
       return true;
     }
