@@ -15,7 +15,8 @@ class SplashViewModel extends BaseModel {
   Future<void> onReady(BuildContext context) async {
     final defaultSearchFilter = SearchFilter((SearchFilterBuilder b) => b
       ..numOfDaysAgo = numOfDaysAgoByDefault
-      ..orderType = orderTypeByDefault);
+      ..orderType = orderTypeByDefault
+      ..requestedPage = _repositoriesProvider.currentPage);
 
     setBusy(true);
     await _repositoriesProvider.getRepositories(defaultSearchFilter);

@@ -1,7 +1,6 @@
 library search_filter;
 
 import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
 import 'package:mobile_code_challenge_solution/core/constants/helper_functions.dart';
 import 'package:mobile_code_challenge_solution/core/models/order_type/order_type.dart';
 
@@ -18,8 +17,10 @@ abstract class SearchFilter
 
   int get numOfDaysAgo;
 
+  int get requestedPage;
+
   String toQueryStr() {
     return
-    '''?q=created:>${getDateXDaysAgo(numOfDaysAgo)}&sort=stars&order=${orderType.name}''';
+    '''?q=created:>${getDateXDaysAgo(numOfDaysAgo)}&sort=stars&order=${orderType.name}&page=$requestedPage''';
   }
 }

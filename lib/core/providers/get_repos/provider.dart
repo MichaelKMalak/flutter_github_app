@@ -8,16 +8,20 @@ import 'package:mobile_code_challenge_solution/core/providers/get_repos/api.dart
 
 class RepositoryProvider with ChangeNotifier {
   final GetReposApi _api = GetReposApi();
+
   SearchResponse _searchResponse;
   UnmodifiableListView<Repository> get repositories =>
       UnmodifiableListView(_searchResponse.items);
 
   int get totalRepoCount => _searchResponse.totalCount;
 
+  int currentPage = 0;
+
   Future<bool> getRepositories(SearchFilter searchFilter) async {
     final apiResponse = await _api.getRepositories(searchFilter);
     if (apiResponse != null) {
       _searchResponse = apiResponse;
+      currentPage++;
       return true;
     }
     return false;
