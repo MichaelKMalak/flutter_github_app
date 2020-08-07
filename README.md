@@ -1,16 +1,92 @@
-# mobile_code_challenge_solution
+# Mobile Code Challenge Android Solution
 
-A new Flutter project.
+[![Build and Test](https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/workflows/Build%20and%20Test/badge.svg)](https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/actions?query=workflow%3A%22Build+and+Test%22) <img src="https://img.shields.io/badge/made%20with-dart-blue.svg" alt="made with dart">
 
-## Getting Started
+This is a solution to the mobile code challenge by 'gemography'. 
 
-This project is a starting point for a Flutter application.
+## Repository branches
+* dev: The current tip-of-tree, absolute latest cutting edge build. 
+* master: The latest developed functional features.
 
-A few resources to get you started if this is your first Flutter project:
+## About this project
+The task is to implement a small app that will list the most starred Github repos that were created in the last 30 days. You'll be fetching the sorted JSON data directly from the Github API.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+The [basic requirements](https://github.com/gemography/mobile-coding-challenge) include:
+ 
+1. List the most starred Github repos that were created in the last 30 days.
+2. View One repository per row.
+3. Repo details include
+  * Repository name
+  * Repository description 
+  * Numbers of stars for the repo. 
+  * Username and avatar of the owner. 
+4. [BONUS] Keep scrolling and new results should appear (pagination).
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Folder Structure
+```bash
+.
+├── core
+│   ├── constants
+│   ├── models
+│   ├── providers
+│   └── view_models
+└── ui
+    ├── utils
+    ├── views
+    └── widgets
+```
+
+## Folder Structure explanation
+The lib folder is divided into two folders. Core and ui. Core contains all the files associated with the logic. ui contains all the files associated with the ui. 
+
+- Core is divided into five folders:
+1. constants: holds constants and enums.
+2. models: Contains all the plain data models.
+3. providers: Contains the classes that extend ChangeProvider that will reserve the state of the app and handle actual business logic.
+4. view_models: contains a view model for each view which will act as an interface between a view and providers.
+
+- UI is divided into three folders:
+1. utils: Contains functions or constants that are used in multiple other UI files.
+2. views: Contains the main app screens.
+3. widgets: Contains widget files that are too big to keep in the view files. Usually shared widgets that are classes extending stateless widgets.
+
+## High Level Architecture Overview
+- Each view will have its own model that extends the ChangeNotifier.
+- Notify listeners for a view will only be called when the View's state changes.
+- Each view_model has only 2 states. Idle and Busy. 
+- Any other piece of UI contained in a view, that requires logic and state (UI updates) will have its own view_model associated with it. This way the main view only paints when the main view state changes.
+- Providers will NOT be passed in through app level global provider, unless it's required by more than 1 view in the app architecture (e.g. Users information).
+- view_models will ONLY request data from providers and reduce state from that data.
+- Providers will perform all the actual work. Api class will request and serialize data. 
+- We have a state property that tells us what UI layout to show in the view and when it's updated we want to call notifyListeners so I moved that into a BaseModel. It contains all the state related code.
+- Most of the views require their own view_model, they need to have a root widget Provider and a child Consumer that takes a build method. I added a BaseView that is generic that will do all this for us. 
+- This architecture setup should easily support calling functions when a new view is shown without having to convert everything to a stateful widget. To achieve this, I converted the BaseView into a stateful widget to use the onInit to pass our view_model back to use in a callback function that we can execute on. This will store the view_model locally in the state and in the initState call we'll check if we have a callback.
+
+## Adding another model
+- Create a `<YOUR_MODEL>.dart` under `core/models/<YOUR_MODEL>/<YOUR_MODEL>.dart`
+- Add your own custom getter values.
+- Add a part file. Ex: `<YOUR_MODEL>.g.dart` above the class
+- If it's a serializable model, add `<YOUR_MODEL>` to the list in `@SerializersFor` class constructor found under `core/models/serializers.dart`
+- Run `flutter packages pub run build_runner build --delete-conflicting-outputs` to build your new model
+- Add a unit test for a model at `test/models/<YOUR_MODEL>.dart`
+
+## Assumptions
+1. The api key is public. I didn't setup an env_secret for it.
+
+## What could be improved?
+1. More Unit testing.
+2. Monitor internet connectivity.
+3. Cache repositories.
+4. View more repository details per row. (e.g. languages)
+5. Filter the repositories.
+6. Add some repositories to favorite list.
+
+## How to run ##
+  - Run `flutter packages get` first to download the dependencies.
+  - Run `flutter test` to execute tests.
+  - Run `flutter run` to try it live on running emulator or usb connected device.
+  - Run `flutter build apk` to generate APK file.
+  - Run `flutter build ios` to package iOS app.
+  
+## Screenshot
+<img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/screenshots/MVP_1.png" width="350" />
