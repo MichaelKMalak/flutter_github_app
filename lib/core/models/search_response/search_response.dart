@@ -19,11 +19,16 @@ abstract class SearchResponse
 
   SearchResponse._();
 
+  @BuiltValueField(wireName: 'total_count')
+  int get totalCount;
+
   BuiltList<Repository> get items;
 
   static FutureOr<SearchResponse> fromJson(dynamic obj) {
-    return serializers.deserializeWith(
-        SearchResponse.serializer, json.decode(utf8.decode(obj)));
+    return obj != null
+        ? serializers.deserializeWith(
+            SearchResponse.serializer, json.decode(utf8.decode(obj)))
+        : null;
   }
 
   static Serializer<SearchResponse> get serializer =>

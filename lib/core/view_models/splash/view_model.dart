@@ -6,13 +6,13 @@ import 'package:mobile_code_challenge_solution/core/view_models/base.dart';
 class SplashViewModel extends BaseModel {
   SplashViewModel({
     @required RepositoryProvider repositoriesProvider,
-  })  : _repositoriesProvider = repositoriesProvider;
+  })  : _repositoryProvider = repositoriesProvider;
 
-  final RepositoryProvider _repositoriesProvider;
+  final RepositoryProvider _repositoryProvider;
 
   Future<void> onReady(BuildContext context) async {
     setBusy(true);
-    await _repositoriesProvider.getRepositories();
+    await _repositoryProvider.getRepositories();
     setBusy(false);
     goTo(context, path: RoutePaths.home, pushAndReplace: true);
   }

@@ -3,6 +3,7 @@ import 'package:mobile_code_challenge_solution/core/providers/controller/provide
 import 'package:mobile_code_challenge_solution/core/view_models/home/view_model.dart';
 import 'package:mobile_code_challenge_solution/ui/views/base.dart';
 import 'package:mobile_code_challenge_solution/ui/views/repository_list/view.dart';
+import 'package:mobile_code_challenge_solution/ui/widgets/bottom_nav.dart';
 import 'package:provider/provider.dart';
 
 class HomeView extends StatelessWidget {
@@ -32,38 +33,6 @@ class HomeView extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class BottomNavBar extends StatelessWidget {
-  BottomNavBar({@required HomeViewModel homeViewModel}) : model = homeViewModel;
-  final HomeViewModel model;
-
-  @override
-  Widget build(BuildContext context) {
-    return Consumer<ControllerProvider>(
-      builder:
-          (BuildContext context, ControllerProvider provider, Widget child) {
-        return BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.star, size: 32),
-              title: Text('Trending'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings, size: 32),
-              title: Text('Settings'),
-            ),
-          ],
-          selectedItemColor: Colors.blue,
-          backgroundColor: Colors.grey.shade200,
-          currentIndex: provider.currentIndex,
-          selectedFontSize: 12,
-          unselectedFontSize: 12,
-          onTap: (index) => model.jumpToPage(index),
-        );
-      },
     );
   }
 }
