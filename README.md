@@ -7,6 +7,8 @@ This is a solution to the mobile code challenge by [gemography](https://www.gemo
 ## Screenshot
 <img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/screenshots/MVP_1.png" width="350" />
 
+## Check out the application without downloading!
+I deployed the application to github pages, and with the power of flutter, you can now check it on [web from here](https://michaelkmalak.github.io/mobile-code-challenge-solution-flutter/)!
 
 ## Repository branches
 * dev
@@ -16,7 +18,9 @@ This is a solution to the mobile code challenge by [gemography](https://www.gemo
 * master-friday-08072020
     * Last updated on Friday 08/07/2020 
     * Following the provided mock up design exactly
-
+* gh-pages
+    * This branch is opened to deploy to github pages
+    
 ## About this project
 The task is to implement a small app that will list the most starred Github repos that were created in the last 30 days by fetching the sorted JSON data directly from the Github API.
 
