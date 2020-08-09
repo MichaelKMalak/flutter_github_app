@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_code_challenge_solution/core/constants/image_paths.dart';
 
 class WebAppWrapper extends StatelessWidget {
   final Widget widget;
@@ -14,7 +15,9 @@ class WebAppWrapper extends StatelessWidget {
         children: [
           Container(
             child: Image.network(
-                'https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_1280.jpg', fit: BoxFit.fitWidth,),
+              ImagePaths.webBackground,
+              fit: BoxFit.fitWidth,
+            ),
           ),
           Column(
             mainAxisSize: MainAxisSize.max,
@@ -41,8 +44,7 @@ class WebAppWrapper extends StatelessWidget {
                                 spreadRadius: -15,
                                 offset: const Offset(0, 80))
                           ]),
-                      Image.network(
-                          'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot.com/o/oneplus.png?alt=media'),
+                      Image.network(ImagePaths.phoneFrame),
                       phoneLayer(widget),
                     ],
                   ),

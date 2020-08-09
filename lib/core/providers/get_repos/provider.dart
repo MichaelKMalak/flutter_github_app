@@ -12,9 +12,9 @@ class RepositoryProvider with ChangeNotifier {
 
   SearchResponse _searchResponse;
   UnmodifiableListView<Repository> get repositories =>
-      UnmodifiableListView(_searchResponse.items);
+      UnmodifiableListView(_searchResponse?.items);
 
-  bool get isFinished => repositories.length >= _searchResponse.totalCount;
+  bool get isFinished => repositories.length >= _searchResponse?.totalCount;
 
   int currentPage;
 
