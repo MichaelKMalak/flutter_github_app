@@ -16,7 +16,9 @@ This is a solution to the mobile code challenge by [gemography](https://www.gemo
 * master-friday-08072020
     * Last updated on Friday 08/07/2020 
     * Following the provided mock up design exactly
-
+* gh-pages
+    * This branch is opened to deploy to github pages
+    
 ## About this project
 The task is to implement a small app that will list the most starred Github repos that were created in the last 30 days by fetching the sorted JSON data directly from the Github API.
 
