@@ -1,8 +1,8 @@
 class ImagePaths {
   static const String webBackground =
-      'https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_1280.jpg';
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/VanGogh-starry_night_ballance1.jpg/1280px-VanGogh-starry_night_ballance1.jpg';
   static const String phoneFrame =
       'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot.com/o/oneplus.png?alt=media';
   static const String githubLogo =
-      'https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2012/png/iconmonstr-github-4.png&r=0&g=0&b=0';
+      'http://pngimg.com/uploads/github/github_PNG83.png';
 }

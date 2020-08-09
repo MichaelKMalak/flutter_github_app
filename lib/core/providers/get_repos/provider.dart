@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_code_challenge_solution/core/constants/defaults.dart';
 import 'package:mobile_code_challenge_solution/core/models/repository/repository.dart';
@@ -10,9 +11,11 @@ import 'package:mobile_code_challenge_solution/core/providers/get_repos/api.dart
 class RepositoryProvider with ChangeNotifier {
   final GetReposApi _api = GetReposApi();
 
-  SearchResponse _searchResponse;
+  SearchResponse _searchResponse = SearchResponse((SearchResponseBuilder b) => b
+    ..items = ListBuilder<Repository>()
+    ..totalCount = 0);
   UnmodifiableListView<Repository> get repositories =>
-      UnmodifiableListView(_searchResponse?.items);
+      UnmodifiableListView(_searchResponse.items);
 
   bool get isFinished => repositories.length >= _searchResponse?.totalCount;
 
