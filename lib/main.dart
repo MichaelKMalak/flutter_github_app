@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_code_challenge_solution/config/provider_config.dart';
+import 'package:mobile_code_challenge_solution/config/router_config.dart';
 import 'package:mobile_code_challenge_solution/core/constants/routes.dart';
-import 'package:mobile_code_challenge_solution/provider_config.dart';
-import 'package:mobile_code_challenge_solution/ui/router.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {

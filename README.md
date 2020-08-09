@@ -20,7 +20,7 @@ I deployed the application to github pages, and with the power of flutter, you c
     * Following the provided mock up design exactly
 * gh-pages
     * This branch is opened to deploy to github pages
-    
+        
 ## About this project
 The task is to implement a small app that will list the most starred Github repos that were created in the last 30 days by fetching the sorted JSON data directly from the Github API.
 
@@ -51,10 +51,12 @@ You can check the [milestones](https://github.com/MichaelKMalak/mobile-code-chal
 │   ├── models
 │   ├── providers
 │   └── view_models
-└── ui
-    ├── utils
-    ├── views
-    └── widgets
+├── ui
+│   ├── utils
+│   ├── views
+│   └── widgets
+└── config
+
 ```
 
 ## Folder Structure explanation
@@ -78,6 +80,9 @@ The lib folder is divided into two folders. Core and ui. Core contains all the f
     * widgets
       * Contains widget files that are too big to keep in the view files. 
       * Usually contains shared widgets that are classes extending stateless widgets.
+      
+* config
+    * configuration files for routing, providers, and locators
 
 ## High Level Architecture Overview
 * Views

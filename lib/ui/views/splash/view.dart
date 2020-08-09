@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_code_challenge_solution/core/providers/get_repos/provider.dart';
 import 'package:mobile_code_challenge_solution/core/view_models/splash/view_model.dart';
-import 'package:mobile_code_challenge_solution/ui/views/base.dart';
+import 'package:mobile_code_challenge_solution/ui/views/base/base.dart';
 import 'package:provider/provider.dart';
 
 class SplashView extends StatelessWidget {
