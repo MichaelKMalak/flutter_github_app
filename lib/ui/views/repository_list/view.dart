@@ -36,7 +36,7 @@ class RepositoryListView extends StatelessWidget {
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     physics: const ClampingScrollPhysics(),
-                    itemCount: model.repositories.length,
+                    itemCount: model.repositories?.length,
                     itemBuilder: (BuildContext context, int index) {
                       return RepositoryListItem(
                           repository: model.repositories[index]);
