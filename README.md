@@ -5,7 +5,8 @@
 This is a solution to the mobile code challenge by [gemography](https://www.gemography.com/). 
 
 ## Screenshot
-<img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/screenshots/MVP_1.png" width="350" />
+<img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/screenshots/Additions_1.png" width="350" />
+<img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/screenshots/Additions_2.png" width="350" />
 
 ## Check out the application without downloading!
 I deployed the application to github pages, and with the power of flutter, you can now check it on [web from here](https://michaelkmalak.github.io/mobile-code-challenge-solution-flutter/)!
@@ -29,17 +30,18 @@ The [basic features](https://github.com/gemography/mobile-coding-challenge) that
  
 - [x] As a User I should be able to list the most starred Github repos that were created in the last 30 days.
 - [x] As a User I should see the results as a list. One repository per row.
-- [x] As a User I should be able to see for each repo/row the following details :
+- [x] As a User I should be able to see for each repo/row the following details:
     * Repository name
     * Repository description 
     * Numbers of stars for the repo. 
     * Username and avatar of the owner. 
-    * Repository language
 
 Additional Features:
 - [x] As a User I should be able to keep scrolling and new results should appear (pagination).
 - [x] As a User I should be able to refresh by pulling the list downwards.
 - [x] As a User I could open the application from web.
+- [x] As a User I can switch to dark mode.
+- [x] As a User I should be able to see for each repo's programming language.
 
 ### An alternative way to view this repository issues
 
