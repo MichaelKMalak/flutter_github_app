@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_code_challenge_solution/core/constants/routes.dart';
 import 'package:mobile_code_challenge_solution/provider_config.dart';
 import 'package:mobile_code_challenge_solution/ui/router.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: initialRoute,
+        initialRoute: RoutePaths.splash,
         routes: Router.routes(),
       ),
     );
