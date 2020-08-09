@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mobile_code_challenge_solution/core/constants/routes.dart';
 import 'package:mobile_code_challenge_solution/core/providers/get_repos/provider.dart';
-import 'package:mobile_code_challenge_solution/core/view_models/base.dart';
+import 'package:mobile_code_challenge_solution/core/view_models/base/base.dart';
 
 class SplashViewModel extends BaseModel {
   SplashViewModel({

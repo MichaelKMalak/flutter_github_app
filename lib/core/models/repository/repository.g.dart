@@ -33,6 +33,12 @@ class _$RepositorySerializer implements StructuredSerializer<Repository> {
         ..add(serializers.serialize(object.description,
             specifiedType: const FullType(String)));
     }
+    if (object.language != null) {
+      result
+        ..add('language')
+        ..add(serializers.serialize(object.language,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -53,6 +59,10 @@ class _$RepositorySerializer implements StructuredSerializer<Repository> {
           break;
         case 'description':
           result.description = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'language':
+          result.language = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'stargazers_count':
@@ -77,6 +87,8 @@ class _$Repository extends Repository {
   @override
   final String description;
   @override
+  final String language;
+  @override
   final int stargazersCount;
   @override
   final RepositoryOwner owner;
@@ -85,7 +97,11 @@ class _$Repository extends Repository {
       (new RepositoryBuilder()..update(updates)).build();
 
   _$Repository._(
-      {this.name, this.description, this.stargazersCount, this.owner})
+      {this.name,
+      this.description,
+      this.language,
+      this.stargazersCount,
+      this.owner})
       : super._() {
     if (name == null) {
       throw new BuiltValueNullFieldError('Repository', 'name');
@@ -111,6 +127,7 @@ class _$Repository extends Repository {
     return other is Repository &&
         name == other.name &&
         description == other.description &&
+        language == other.language &&
         stargazersCount == other.stargazersCount &&
         owner == other.owner;
   }
@@ -118,7 +135,9 @@ class _$Repository extends Repository {
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, name.hashCode), description.hashCode),
+        $jc(
+            $jc($jc($jc(0, name.hashCode), description.hashCode),
+                language.hashCode),
             stargazersCount.hashCode),
         owner.hashCode));
   }
@@ -128,6 +147,7 @@ class _$Repository extends Repository {
     return (newBuiltValueToStringHelper('Repository')
           ..add('name', name)
           ..add('description', description)
+          ..add('language', language)
           ..add('stargazersCount', stargazersCount)
           ..add('owner', owner))
         .toString();
@@ -145,6 +165,10 @@ class RepositoryBuilder implements Builder<Repository, RepositoryBuilder> {
   String get description => _$this._description;
   set description(String description) => _$this._description = description;
 
+  String _language;
+  String get language => _$this._language;
+  set language(String language) => _$this._language = language;
+
   int _stargazersCount;
   int get stargazersCount => _$this._stargazersCount;
   set stargazersCount(int stargazersCount) =>
@@ -161,6 +185,7 @@ class RepositoryBuilder implements Builder<Repository, RepositoryBuilder> {
     if (_$v != null) {
       _name = _$v.name;
       _description = _$v.description;
+      _language = _$v.language;
       _stargazersCount = _$v.stargazersCount;
       _owner = _$v.owner?.toBuilder();
       _$v = null;
@@ -189,6 +214,7 @@ class RepositoryBuilder implements Builder<Repository, RepositoryBuilder> {
           new _$Repository._(
               name: name,
               description: description,
+              language: language,
               stargazersCount: stargazersCount,
               owner: owner.build());
     } catch (_) {
