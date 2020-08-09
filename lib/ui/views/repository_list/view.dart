@@ -31,7 +31,7 @@ class RepositoryListView extends StatelessWidget {
                 textBuilder: DefaultLoadMoreTextBuilder.english,
                 child: ListView.separated(
                     separatorBuilder: (context, index) => const Divider(
-                          color: Colors.grey,
+                          color: Colors.black38,
                         ),
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
