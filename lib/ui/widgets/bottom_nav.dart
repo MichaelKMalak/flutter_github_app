@@ -24,7 +24,7 @@ class BottomNavBar extends StatelessWidget {
             ),
           ],
           selectedItemColor: Colors.blue,
-          backgroundColor: Colors.grey.shade200,
+          //backgroundColor: Colors.grey.shade200,
           currentIndex: provider.currentIndex,
           selectedFontSize: 12,
           unselectedFontSize: 12,

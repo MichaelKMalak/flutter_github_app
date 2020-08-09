@@ -40,7 +40,7 @@ class _RepositoryListItemState extends State<RepositoryListItem> {
                 Flexible(
                   child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey,
+                        color: Theme.of(context).primaryColor,
                         borderRadius: BorderRadius.circular(30),
                       ),
                       padding: const EdgeInsets.symmetric(

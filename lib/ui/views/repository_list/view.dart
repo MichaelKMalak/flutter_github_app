@@ -45,8 +45,9 @@ class RepositoryListView extends StatelessWidget {
 
   ListView buildListView(RepositoryListViewModel model) {
     return ListView.separated(
-        separatorBuilder: (context, index) => const Divider(
-              color: Colors.black38,
+        separatorBuilder: (context, index) => Divider(
+              color: Theme.of(context).primaryColor,
+              thickness: 1,
             ),
         scrollDirection: Axis.vertical,
         shrinkWrap: true,

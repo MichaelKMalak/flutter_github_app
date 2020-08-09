@@ -3,6 +3,7 @@ import 'package:mobile_code_challenge_solution/core/providers/controller/provide
 import 'package:mobile_code_challenge_solution/core/view_models/home/view_model.dart';
 import 'package:mobile_code_challenge_solution/ui/views/base/base.dart';
 import 'package:mobile_code_challenge_solution/ui/views/repository_list/view.dart';
+import 'package:mobile_code_challenge_solution/ui/views/settings/view.dart';
 import 'package:mobile_code_challenge_solution/ui/widgets/bottom_nav.dart';
 import 'package:provider/provider.dart';
 
@@ -28,7 +29,7 @@ class HomeView extends StatelessWidget {
             },
             children: <Widget>[
               RepositoryListView(),
-              const Center(child: Text('settings'))
+              SettingsView(),
             ],
           ),
         ),
