@@ -26,10 +26,38 @@ class _RepositoryListItemState extends State<RepositoryListItem> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(widget.repository.name, style: headlineTextStyle,),
-          const SizedBox(height: 10,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                flex: 2,
+                child: Text(
+                widget.repository.name,
+                style: headlineTextStyle,
+                ),
+              ),
+              if (widget.repository.language != null)
+                Flexible(
+                  child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 5,
+                        horizontal: 10,
+                      ),
+                      child: Text(widget.repository.language)),
+                ),
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
           Text(widget.repository.description ?? ''),
-          const SizedBox(height: 10,),
+          const SizedBox(
+            height: 10,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
