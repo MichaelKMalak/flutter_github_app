@@ -56,7 +56,7 @@ class _RepositoryListItemState extends State<RepositoryListItem> {
           ),
           Text(widget.repository.description ?? ''),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
