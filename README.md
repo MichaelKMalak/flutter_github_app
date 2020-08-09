@@ -34,10 +34,12 @@ The [basic features](https://github.com/gemography/mobile-coding-challenge) that
     * Repository description 
     * Numbers of stars for the repo. 
     * Username and avatar of the owner. 
+    * Repository language
 
 Additional Features:
 - [x] As a User I should be able to keep scrolling and new results should appear (pagination).
 - [x] As a User I should be able to refresh by pulling the list downwards.
+- [x] As a User I could open the application from web.
 
 ### An alternative way to view this repository issues
 
