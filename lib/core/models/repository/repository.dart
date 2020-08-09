@@ -17,6 +17,9 @@ abstract class Repository implements Built<Repository, RepositoryBuilder> {
   @nullable
   String get description;
 
+  @nullable
+  String get language;
+
   @BuiltValueField(wireName: 'stargazers_count')
   int get stargazersCount;
 
