@@ -12,10 +12,7 @@ class HomeViewModel extends BaseModel {
       _controllerProvider?.homePageController;
 
   void jumpToPage(int index){
-    _controllerProvider.homePageController.animateToPage(index,
-        duration: const Duration(milliseconds: 400),
-        curve: Curves.easeInOut);
-    updatePageIndex(index);
+    _controllerProvider.jumpToPage(index);
   }
 
   void updatePageIndex(int index){

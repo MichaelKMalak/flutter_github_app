@@ -23,6 +23,9 @@ class _$RepositorySerializer implements StructuredSerializer<Repository> {
       'stargazers_count',
       serializers.serialize(object.stargazersCount,
           specifiedType: const FullType(int)),
+      'forks_count',
+      serializers.serialize(object.forksCount,
+          specifiedType: const FullType(int)),
       'html_url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
       'owner',
@@ -71,6 +74,10 @@ class _$RepositorySerializer implements StructuredSerializer<Repository> {
           result.stargazersCount = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
+        case 'forks_count':
+          result.forksCount = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
         case 'html_url':
           result.url = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -97,6 +104,8 @@ class _$Repository extends Repository {
   @override
   final int stargazersCount;
   @override
+  final int forksCount;
+  @override
   final String url;
   @override
   final RepositoryOwner owner;
@@ -109,6 +118,7 @@ class _$Repository extends Repository {
       this.description,
       this.language,
       this.stargazersCount,
+      this.forksCount,
       this.url,
       this.owner})
       : super._() {
@@ -117,6 +127,9 @@ class _$Repository extends Repository {
     }
     if (stargazersCount == null) {
       throw new BuiltValueNullFieldError('Repository', 'stargazersCount');
+    }
+    if (forksCount == null) {
+      throw new BuiltValueNullFieldError('Repository', 'forksCount');
     }
     if (url == null) {
       throw new BuiltValueNullFieldError('Repository', 'url');
@@ -141,6 +154,7 @@ class _$Repository extends Repository {
         description == other.description &&
         language == other.language &&
         stargazersCount == other.stargazersCount &&
+        forksCount == other.forksCount &&
         url == other.url &&
         owner == other.owner;
   }
@@ -150,9 +164,11 @@ class _$Repository extends Repository {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, name.hashCode), description.hashCode),
-                    language.hashCode),
-                stargazersCount.hashCode),
+                $jc(
+                    $jc($jc($jc(0, name.hashCode), description.hashCode),
+                        language.hashCode),
+                    stargazersCount.hashCode),
+                forksCount.hashCode),
             url.hashCode),
         owner.hashCode));
   }
@@ -164,6 +180,7 @@ class _$Repository extends Repository {
           ..add('description', description)
           ..add('language', language)
           ..add('stargazersCount', stargazersCount)
+          ..add('forksCount', forksCount)
           ..add('url', url)
           ..add('owner', owner))
         .toString();
@@ -190,6 +207,10 @@ class RepositoryBuilder implements Builder<Repository, RepositoryBuilder> {
   set stargazersCount(int stargazersCount) =>
       _$this._stargazersCount = stargazersCount;
 
+  int _forksCount;
+  int get forksCount => _$this._forksCount;
+  set forksCount(int forksCount) => _$this._forksCount = forksCount;
+
   String _url;
   String get url => _$this._url;
   set url(String url) => _$this._url = url;
@@ -207,6 +228,7 @@ class RepositoryBuilder implements Builder<Repository, RepositoryBuilder> {
       _description = _$v.description;
       _language = _$v.language;
       _stargazersCount = _$v.stargazersCount;
+      _forksCount = _$v.forksCount;
       _url = _$v.url;
       _owner = _$v.owner?.toBuilder();
       _$v = null;
@@ -237,6 +259,7 @@ class RepositoryBuilder implements Builder<Repository, RepositoryBuilder> {
               description: description,
               language: language,
               stargazersCount: stargazersCount,
+              forksCount: forksCount,
               url: url,
               owner: owner.build());
     } catch (_) {
