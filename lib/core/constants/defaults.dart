@@ -4,3 +4,6 @@ import 'package:mobile_code_challenge_solution/core/models/sort_type/sort_type.d
 const int numOfDaysAgoByDefault = 30;
 const OrderType orderTypeByDefault = OrderType.desc;
 const SortType sortTypeByDefault = SortType.stars;
+const double minSliderValueByDefault = 1;
+const double maxSliderValueByDefault = 270;
+const int divisionSliderValueByDefault = 12;
