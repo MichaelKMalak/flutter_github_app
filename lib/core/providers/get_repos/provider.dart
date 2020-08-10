@@ -19,6 +19,7 @@ class RepositoryProvider with ChangeNotifier {
       UnmodifiableListView(_searchResponse.items);
 
   bool get isFinished => repositories.length >= _searchResponse?.totalCount;
+  bool get isSortedByFork => sortType != null && sortType == SortType.forks;
 
   int currentPage;
   SortType sortType;
@@ -31,7 +32,7 @@ class RepositoryProvider with ChangeNotifier {
         ..requestedPage = _currentPage);
 
   Future<bool> updateSortType(SortType newSortType) async {
-    if(newSortType != sortType) {
+    if (newSortType != sortType) {
       sortType = newSortType;
       final success = await getRepositories();
       return success;
