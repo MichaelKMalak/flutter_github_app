@@ -21,14 +21,14 @@ class RepositoryProvider with ChangeNotifier {
   bool get isFinished => repositories.length >= _searchResponse?.totalCount;
   bool get isSortedByFork => sortType != null && sortType == SortType.forks;
 
-  int numOfDaysAgo = numOfDaysAgoByDefault;
+  int numOfDaysAgo = Defaults.numOfDaysAgo;
   int currentPage;
-  SortType sortType = sortTypeByDefault;
+  SortType sortType = Defaults.sortType;
 
   SearchFilter defaultSearchFilter(int _currentPage) =>
       SearchFilter((SearchFilterBuilder b) => b
         ..numOfDaysAgo = numOfDaysAgo
-        ..orderType = orderTypeByDefault
+        ..orderType = Defaults.orderType
         ..sortType = sortType
         ..requestedPage = _currentPage);
 

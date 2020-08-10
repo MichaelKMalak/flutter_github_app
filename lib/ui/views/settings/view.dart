@@ -50,9 +50,9 @@ class SettingsView extends StatelessWidget {
       const ListTile(title: Text('Days ago')),
       Slider(
         value: model.numOfDaysAgo as double,
-        min: minSliderValueByDefault,
-        max: maxSliderValueByDefault,
-        divisions: divisionSliderValueByDefault,
+        min: Defaults.minSliderValue,
+        max: Defaults.maxSliderValue,
+        divisions: Defaults.divisionSliderValue,
         label: model.numOfDaysAgo.round().toString(),
         onChanged: (double value) => model.updateDaysAgo(value),
       ),
