@@ -141,7 +141,7 @@ The lib folder is divided into two folders. Core and ui. Core contains all the f
   - url_launcher: ^5.5.0
 
 ## Adding strings ##
-  1- Add the new string to `lib/core/services/i18n.dart` in the following format:
+   1- Add the new string to `lib/core/services/i18n.dart` in the following format:
     ` String get newStringName {
            return Intl.message(
              'New string goes here',
@@ -150,11 +150,14 @@ The lib folder is divided into two folders. Core and ui. Core contains all the f
              locale: localeName,
            );
          }`
-  2- Generate the translation file in JSON format (.arb extension) by running in the terminal:
+        
+   2- Generate the translation file in JSON format (.arb extension) by running in the terminal:
     `flutter pub run intl_translation:extract_to_arb -
      -output-dir=lib/core/services/i18n/messages lib/core/services/i18n/i18n.dart`
-  3- Translate the generated strings from file `..services/i18n/messages/intl_messages.arb` in case you have multiple languages, and add the translations to files in the same folders with name similar to the locale it is translated to. Ex.: English translated file will be `intl_en.arb`
-  4- Generate interface implementations from the translated files by running in the terminal:
+ 
+   3- Translate the generated strings from file `..services/i18n/messages/intl_messages.arb` in case you have multiple languages, and add the translations to files in the same folders with name similar to the locale it is translated to. Ex.: English translated file will be `intl_en.arb`
+  
+   4- Generate interface implementations from the translated files by running in the terminal:
       `flutter pub run intl_translation:generate_from_ar
        b --output-dir=lib/core/services/i18n/wrappers lib/core/services/i18n/i18n.dart lib/core/services/i1
        8n/messages/FILENAME_GOES_HERE.arb
