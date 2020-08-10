@@ -6,6 +6,7 @@ import 'package:mobile_code_challenge_solution/core/constants/defaults.dart';
 import 'package:mobile_code_challenge_solution/core/models/repository/repository.dart';
 import 'package:mobile_code_challenge_solution/core/models/search_filter/search_filter.dart';
 import 'package:mobile_code_challenge_solution/core/models/search_response/search_response.dart';
+import 'package:mobile_code_challenge_solution/core/models/sort_type/sort_type.dart';
 import 'package:mobile_code_challenge_solution/core/providers/get_repos/api.dart';
 
 class RepositoryProvider with ChangeNotifier {
@@ -18,14 +19,34 @@ class RepositoryProvider with ChangeNotifier {
       UnmodifiableListView(_searchResponse.items);
 
   bool get isFinished => repositories.length >= _searchResponse?.totalCount;
+  bool get isSortedByFork => sortType != null && sortType == SortType.forks;
 
+  int numOfDaysAgo = numOfDaysAgoByDefault;
   int currentPage;
+  SortType sortType = sortTypeByDefault;
 
   SearchFilter defaultSearchFilter(int _currentPage) =>
       SearchFilter((SearchFilterBuilder b) => b
-        ..numOfDaysAgo = numOfDaysAgoByDefault
+        ..numOfDaysAgo = numOfDaysAgo
         ..orderType = orderTypeByDefault
+        ..sortType = sortType
         ..requestedPage = _currentPage);
+
+  void updateNumOFDaysAgo(int days) {
+    if (days != numOfDaysAgo) {
+      numOfDaysAgo = days;
+      notifyListeners();
+    }
+  }
+
+  Future<bool> updateSortType(SortType newSortType) async {
+    if (newSortType != sortType) {
+      sortType = newSortType;
+      final success = await getRepositories();
+      return success;
+    }
+    return false;
+  }
 
   Future<bool> getMoreRepositories() async {
     final searchFilter = defaultSearchFilter(currentPage);

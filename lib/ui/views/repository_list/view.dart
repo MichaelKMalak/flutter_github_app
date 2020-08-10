@@ -21,9 +21,23 @@ class RepositoryListView extends StatelessWidget {
           (BuildContext context, RepositoryListViewModel model, Widget child) =>
               Scaffold(
         appBar: AppBar(
-          title: const Text('Trending Repos'),
-          centerTitle: true,
-        ),
+            title: const Text('Trending Repos'),
+            centerTitle: true,
+            actions: [
+              PopupMenuButton<String>(
+                icon: const Icon(Icons.filter_list),
+                onSelected: model.sort,
+                itemBuilder: (BuildContext context) {
+                  return {'stars', 'forks'}
+                      .map((String choice) {
+                    return PopupMenuItem<String>(
+                      value: choice,
+                      child: Text('Sort by $choice'),
+                    );
+                  }).toList();
+                },
+              ),
+            ]),
         body: SafeArea(
           child: Center(
             child: model.busy
@@ -54,7 +68,10 @@ class RepositoryListView extends StatelessWidget {
         physics: const ClampingScrollPhysics(),
         itemCount: model.repositories.length,
         itemBuilder: (BuildContext context, int index) {
-          return RepositoryListItem(repository: model.repositories[index]);
+          return InkWell(
+            onTap: () => model.launchURL(index),
+            child: RepositoryListItem(repository: model.repositories[index]),
+          );
         });
   }
 }

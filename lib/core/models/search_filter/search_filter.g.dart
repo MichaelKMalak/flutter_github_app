@@ -10,6 +10,8 @@ class _$SearchFilter extends SearchFilter {
   @override
   final OrderType orderType;
   @override
+  final SortType sortType;
+  @override
   final int numOfDaysAgo;
   @override
   final int requestedPage;
@@ -17,10 +19,14 @@ class _$SearchFilter extends SearchFilter {
   factory _$SearchFilter([void Function(SearchFilterBuilder) updates]) =>
       (new SearchFilterBuilder()..update(updates)).build();
 
-  _$SearchFilter._({this.orderType, this.numOfDaysAgo, this.requestedPage})
+  _$SearchFilter._(
+      {this.orderType, this.sortType, this.numOfDaysAgo, this.requestedPage})
       : super._() {
     if (orderType == null) {
       throw new BuiltValueNullFieldError('SearchFilter', 'orderType');
+    }
+    if (sortType == null) {
+      throw new BuiltValueNullFieldError('SearchFilter', 'sortType');
     }
     if (numOfDaysAgo == null) {
       throw new BuiltValueNullFieldError('SearchFilter', 'numOfDaysAgo');
@@ -42,13 +48,16 @@ class _$SearchFilter extends SearchFilter {
     if (identical(other, this)) return true;
     return other is SearchFilter &&
         orderType == other.orderType &&
+        sortType == other.sortType &&
         numOfDaysAgo == other.numOfDaysAgo &&
         requestedPage == other.requestedPage;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, orderType.hashCode), numOfDaysAgo.hashCode),
+    return $jf($jc(
+        $jc($jc($jc(0, orderType.hashCode), sortType.hashCode),
+            numOfDaysAgo.hashCode),
         requestedPage.hashCode));
   }
 
@@ -56,6 +65,7 @@ class _$SearchFilter extends SearchFilter {
   String toString() {
     return (newBuiltValueToStringHelper('SearchFilter')
           ..add('orderType', orderType)
+          ..add('sortType', sortType)
           ..add('numOfDaysAgo', numOfDaysAgo)
           ..add('requestedPage', requestedPage))
         .toString();
@@ -70,6 +80,10 @@ class SearchFilterBuilder
   OrderType get orderType => _$this._orderType;
   set orderType(OrderType orderType) => _$this._orderType = orderType;
 
+  SortType _sortType;
+  SortType get sortType => _$this._sortType;
+  set sortType(SortType sortType) => _$this._sortType = sortType;
+
   int _numOfDaysAgo;
   int get numOfDaysAgo => _$this._numOfDaysAgo;
   set numOfDaysAgo(int numOfDaysAgo) => _$this._numOfDaysAgo = numOfDaysAgo;
@@ -83,6 +97,7 @@ class SearchFilterBuilder
   SearchFilterBuilder get _$this {
     if (_$v != null) {
       _orderType = _$v.orderType;
+      _sortType = _$v.sortType;
       _numOfDaysAgo = _$v.numOfDaysAgo;
       _requestedPage = _$v.requestedPage;
       _$v = null;
@@ -108,6 +123,7 @@ class SearchFilterBuilder
     final _$result = _$v ??
         new _$SearchFilter._(
             orderType: orderType,
+            sortType: sortType,
             numOfDaysAgo: numOfDaysAgo,
             requestedPage: requestedPage);
     replace(_$result);
