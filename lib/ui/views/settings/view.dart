@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_code_challenge_solution/core/constants/defaults.dart';
 import 'package:mobile_code_challenge_solution/core/providers/controller/provider.dart';
 import 'package:mobile_code_challenge_solution/core/providers/get_repos/provider.dart';
 import 'package:mobile_code_challenge_solution/core/providers/theme_provider/provider.dart';
@@ -49,9 +50,9 @@ class SettingsView extends StatelessWidget {
       const ListTile(title: Text('Days ago')),
       Slider(
         value: model.numOfDaysAgo as double,
-        min: 1,
-        max: 360,
-        divisions: 12,
+        min: Defaults.minSliderValue,
+        max: Defaults.maxSliderValue,
+        divisions: Defaults.divisionSliderValue,
         label: model.numOfDaysAgo.round().toString(),
         onChanged: (double value) => model.updateDaysAgo(value),
       ),
