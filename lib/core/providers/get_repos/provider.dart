@@ -6,6 +6,7 @@ import 'package:mobile_code_challenge_solution/core/constants/defaults.dart';
 import 'package:mobile_code_challenge_solution/core/models/repository/repository.dart';
 import 'package:mobile_code_challenge_solution/core/models/search_filter/search_filter.dart';
 import 'package:mobile_code_challenge_solution/core/models/search_response/search_response.dart';
+import 'package:mobile_code_challenge_solution/core/models/sort_type/sort_type.dart';
 import 'package:mobile_code_challenge_solution/core/providers/get_repos/api.dart';
 
 class RepositoryProvider with ChangeNotifier {
@@ -20,13 +21,23 @@ class RepositoryProvider with ChangeNotifier {
   bool get isFinished => repositories.length >= _searchResponse?.totalCount;
 
   int currentPage;
+  SortType sortType;
 
   SearchFilter defaultSearchFilter(int _currentPage) =>
       SearchFilter((SearchFilterBuilder b) => b
         ..numOfDaysAgo = numOfDaysAgoByDefault
         ..orderType = orderTypeByDefault
-        ..sortType = sortTypeByDefault
+        ..sortType = sortType ?? sortTypeByDefault
         ..requestedPage = _currentPage);
+
+  Future<bool> updateSortType(SortType newSortType) async {
+    if(newSortType != sortType) {
+      sortType = newSortType;
+      final success = await getRepositories();
+      return success;
+    }
+    return false;
+  }
 
   Future<bool> getMoreRepositories() async {
     final searchFilter = defaultSearchFilter(currentPage);
