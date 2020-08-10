@@ -12,10 +12,11 @@ void main() {
       final searchFilter = SearchFilter((SearchFilterBuilder b) => b
         ..numOfDaysAgo = sortAndFilter.numOfDaysAgo
         ..orderType = sortAndFilter.orderType
+        ..sortType = sortAndFilter.sortType
         ..requestedPage = sortAndFilter.page);
 
       expect(searchFilter.toQueryStr(),
-          '''?q=created:>${getDateXDaysAgo(sortAndFilter.numOfDaysAgo)}&sort=stars&order=${sortAndFilter.orderType.name}&page=${sortAndFilter.page}''');
+          '''?q=created:>${getDateXDaysAgo(sortAndFilter.numOfDaysAgo)}&sort=${sortAndFilter.sortType.name}&order=${sortAndFilter.orderType.name}&page=${sortAndFilter.page}''');
     });
   });
 }

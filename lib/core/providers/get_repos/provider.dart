@@ -25,6 +25,7 @@ class RepositoryProvider with ChangeNotifier {
       SearchFilter((SearchFilterBuilder b) => b
         ..numOfDaysAgo = numOfDaysAgoByDefault
         ..orderType = orderTypeByDefault
+        ..sortType = sortTypeByDefault
         ..requestedPage = _currentPage);
 
   Future<bool> getMoreRepositories() async {

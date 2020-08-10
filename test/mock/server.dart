@@ -12,6 +12,7 @@ class MockServer {
         'description':
             '''Declarative way to track promise lifecycle states using \"render props\" 🕶''',
         'stargazers_count': 149,
+        'forks_count': 7175,
       };
 
   List<int> get responseJsonObj => utf8.encode(json.encode({
