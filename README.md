@@ -5,8 +5,8 @@
 This is a solution to the mobile code challenge by [gemography](https://www.gemography.com/). 
 
 ## Screenshot
-<img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/screenshots/Additions_1.png" width="350" />
-<img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/screenshots/Additions_2.png" width="350" />
+<img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/assets/screenshots/Additions_1.png" width="350" />
+<img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/assets/screenshots/Additions_2.png" width="350" />
 
 ## Check out the application without downloading!
 I deployed the application to github pages, and with the power of flutter, you can now check it on [web from here](https://michaelkmalak.github.io/mobile-code-challenge-solution-flutter/)!
@@ -139,7 +139,27 @@ The lib folder is divided into two folders. Core and ui. Core contains all the f
   - built_collection: ^4.3.2
   - loadmore: ^1.0.4
   - url_launcher: ^5.5.0
-  
+
+## Adding strings ##
+  1- Add the new string to `lib/core/services/i18n.dart` in the following format:
+    ` String get newStringName {
+           return Intl.message(
+             'New string goes here',
+             name: 'newStringName',
+             desc: 'Description for the new string',
+             locale: localeName,
+           );
+         }`
+  2- Generate the translation file in JSON format (.arb extension) by running in the terminal:
+    `flutter pub run intl_translation:extract_to_arb -
+     -output-dir=lib/core/services/i18n/messages lib/core/services/i18n/i18n.dart`
+  3- Translate the generated strings from file `..services/i18n/messages/intl_messages.arb` in case you have multiple languages, and add the translations to files in the same folders with name similar to the locale it is translated to. Ex.: English translated file will be `intl_en.arb`
+  4- Generate interface implementations from the translated files by running in the terminal:
+      `flutter pub run intl_translation:generate_from_ar
+       b --output-dir=lib/core/services/i18n/wrappers lib/core/services/i18n/i18n.dart lib/core/services/i1
+       8n/messages/FILENAME_GOES_HERE.arb
+    `
+    
 ## How to run ##
   - Run `flutter channel` and make sure you are on flutter's *stable channel*.
   - Run `flutter packages get` to download pubspec dependencies.

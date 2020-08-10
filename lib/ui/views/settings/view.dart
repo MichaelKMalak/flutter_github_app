@@ -3,6 +3,7 @@ import 'package:mobile_code_challenge_solution/core/constants/defaults.dart';
 import 'package:mobile_code_challenge_solution/core/providers/controller/provider.dart';
 import 'package:mobile_code_challenge_solution/core/providers/get_repos/provider.dart';
 import 'package:mobile_code_challenge_solution/core/providers/theme_provider/provider.dart';
+import 'package:mobile_code_challenge_solution/core/services/i18n/i18n.dart';
 import 'package:mobile_code_challenge_solution/core/view_models/settings/view_model.dart';
 import 'package:mobile_code_challenge_solution/ui/views/base/base.dart';
 import 'package:provider/provider.dart';
@@ -32,12 +33,14 @@ class SettingsView extends StatelessWidget {
                   children: [
                     MaterialButton(
                       onPressed: model.toggleTheme,
-                      child: const ListTile(title: Text('Toggle theme')),
+                      child: ListTile(
+                          title:
+                              Text(AppLocalizations.of(context).toggleTheme)),
                     ),
                     const Divider(
                       thickness: 1,
                     ),
-                    ...buildFilterSection(model),
+                    ...buildFilterSection(model, context),
                   ],
                 ),
               ),
@@ -45,9 +48,10 @@ class SettingsView extends StatelessWidget {
     );
   }
 
-  List<Widget> buildFilterSection(SettingsViewModel model) {
+  List<Widget> buildFilterSection(
+      SettingsViewModel model, BuildContext context) {
     return [
-      const ListTile(title: Text('Days ago')),
+      ListTile(title: Text(AppLocalizations.of(context).daysAgo)),
       Slider(
         value: model.numOfDaysAgo as double,
         min: Defaults.minSliderValue,
@@ -58,7 +62,7 @@ class SettingsView extends StatelessWidget {
       ),
       RaisedButton(
         onPressed: model.applyFilter,
-        child: const Text('Filter Repositories'),
+        child: Text(AppLocalizations.of(context).filterRepos),
       ),
     ];
   }

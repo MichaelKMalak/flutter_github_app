@@ -11,10 +11,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   intl: ^0.16.1
-  provider: ^4.3.1
+  provider: ^4.3.2
   pedantic: ^1.9.0
-  dio: ^3.0.9
+  dio: ^3.0.10
   built_value: ^7.1.0
   built_collection: ^4.3.2
   loadmore: ^1.0.4
@@ -23,7 +25,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^1.10.1
+  intl_translation: ^0.17.10
+  build_runner: ^1.10.0
   built_value_generator: ^7.1.0
 
 flutter:

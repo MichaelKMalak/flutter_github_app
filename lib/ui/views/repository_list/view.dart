@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loadmore/loadmore.dart';
 import 'package:mobile_code_challenge_solution/core/providers/get_repos/provider.dart';
+import 'package:mobile_code_challenge_solution/core/services/i18n/i18n.dart';
 import 'package:mobile_code_challenge_solution/core/view_models/repository_list/view_model.dart';
 import 'package:mobile_code_challenge_solution/ui/views/base/base.dart';
 import 'package:mobile_code_challenge_solution/ui/widgets/repository_item.dart';
@@ -21,18 +22,21 @@ class RepositoryListView extends StatelessWidget {
           (BuildContext context, RepositoryListViewModel model, Widget child) =>
               Scaffold(
         appBar: AppBar(
-            title: const Text('Trending Repos'),
+            title: Text(AppLocalizations.of(context).repoListTitle),
             centerTitle: true,
             actions: [
               PopupMenuButton<String>(
                 icon: const Icon(Icons.filter_list),
                 onSelected: model.sort,
                 itemBuilder: (BuildContext context) {
-                  return {'stars', 'forks'}
-                      .map((String choice) {
+                  return {
+                    AppLocalizations.of(context).stars,
+                    AppLocalizations.of(context).forks
+                  }.map((String choice) {
                     return PopupMenuItem<String>(
                       value: choice,
-                      child: Text('Sort by $choice'),
+                      child: Text(
+                          '${AppLocalizations.of(context).sortBy} $choice'),
                     );
                   }).toList();
                 },

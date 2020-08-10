@@ -1,0 +1,56 @@
+{
+  "title": "Github Repositories",
+  "@title": {
+    "description": "Title for the application",
+    "type": "text",
+    "placeholders": {}
+  },
+  "repoListTitle": "Trending Repos",
+  "@repoListTitle": {
+    "description": "Text for the title of the Repository List screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "sortBy": "Sort by",
+  "@sortBy": {
+    "description": "Text before sorting parameter in menu dropdown list",
+    "type": "text",
+    "placeholders": {}
+  },
+  "stars": "stars",
+  "@stars": {
+    "description": "one possible sorting parameter",
+    "type": "text",
+    "placeholders": {}
+  },
+  "forks": "forks",
+  "@forks": {
+    "description": "one possible sorting parameter",
+    "type": "text",
+    "placeholders": {}
+  },
+  "settings": "settings",
+  "@settings": {
+    "description": "Text for the title of the Settings screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "toggleTheme": "Toggle theme",
+  "@toggleTheme": {
+    "description": "Text to toggle theme between different options",
+    "type": "text",
+    "placeholders": {}
+  },
+  "daysAgo": "Days ago",
+  "@daysAgo": {
+    "description": "Text title of filter option",
+    "type": "text",
+    "placeholders": {}
+  },
+  "filterRepos": "Filter Repositories",
+  "@filterRepos": {
+    "description": "Text displayed on filter button",
+    "type": "text",
+    "placeholders": {}
+  }
+}
