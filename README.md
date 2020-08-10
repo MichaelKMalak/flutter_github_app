@@ -43,6 +43,8 @@ Additional Features:
 - [x] As a User I can switch to dark mode.
 - [x] As a User I should be able to see for each repo's programming language.
 - [x] As a User I can open a repository in browser by clicking on it.
+- [x] As a User I can filter repositories by number of days ago.
+- [x] As a User I can sort repositories by number of forks or number of stars.
 
 ### An alternative way to view this repository issues
 
