@@ -5,8 +5,8 @@
 This is a solution to the mobile code challenge by [gemography](https://www.gemography.com/). 
 
 ## Screenshot
-<img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/screenshots/Additions_1.png" width="350" />
-<img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/screenshots/Additions_2.png" width="350" />
+<img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/assets/screenshots/Additions_1.png" width="350" />
+<img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/assets/screenshots/Additions_2.png" width="350" />
 
 ## Check out the application without downloading!
 I deployed the application to github pages, and with the power of flutter, you can now check it on [web from here](https://michaelkmalak.github.io/mobile-code-challenge-solution-flutter/)!
