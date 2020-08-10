@@ -12,4 +12,11 @@ class ControllerProvider with ChangeNotifier {
     currentIndex = index;
     notifyListeners();
   }
+
+  void jumpToPage(int index) {
+    homePageController.animateToPage(index,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeInOut);
+    updateCurrentIndex(index);
+  }
 }
