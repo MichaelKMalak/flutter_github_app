@@ -23,6 +23,8 @@ class _$RepositorySerializer implements StructuredSerializer<Repository> {
       'stargazers_count',
       serializers.serialize(object.stargazersCount,
           specifiedType: const FullType(int)),
+      'html_url',
+      serializers.serialize(object.url, specifiedType: const FullType(String)),
       'owner',
       serializers.serialize(object.owner,
           specifiedType: const FullType(RepositoryOwner)),
@@ -69,6 +71,10 @@ class _$RepositorySerializer implements StructuredSerializer<Repository> {
           result.stargazersCount = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
+        case 'html_url':
+          result.url = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'owner':
           result.owner.replace(serializers.deserialize(value,
                   specifiedType: const FullType(RepositoryOwner))
@@ -91,6 +97,8 @@ class _$Repository extends Repository {
   @override
   final int stargazersCount;
   @override
+  final String url;
+  @override
   final RepositoryOwner owner;
 
   factory _$Repository([void Function(RepositoryBuilder) updates]) =>
@@ -101,6 +109,7 @@ class _$Repository extends Repository {
       this.description,
       this.language,
       this.stargazersCount,
+      this.url,
       this.owner})
       : super._() {
     if (name == null) {
@@ -108,6 +117,9 @@ class _$Repository extends Repository {
     }
     if (stargazersCount == null) {
       throw new BuiltValueNullFieldError('Repository', 'stargazersCount');
+    }
+    if (url == null) {
+      throw new BuiltValueNullFieldError('Repository', 'url');
     }
     if (owner == null) {
       throw new BuiltValueNullFieldError('Repository', 'owner');
@@ -129,6 +141,7 @@ class _$Repository extends Repository {
         description == other.description &&
         language == other.language &&
         stargazersCount == other.stargazersCount &&
+        url == other.url &&
         owner == other.owner;
   }
 
@@ -136,9 +149,11 @@ class _$Repository extends Repository {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc(0, name.hashCode), description.hashCode),
-                language.hashCode),
-            stargazersCount.hashCode),
+            $jc(
+                $jc($jc($jc(0, name.hashCode), description.hashCode),
+                    language.hashCode),
+                stargazersCount.hashCode),
+            url.hashCode),
         owner.hashCode));
   }
 
@@ -149,6 +164,7 @@ class _$Repository extends Repository {
           ..add('description', description)
           ..add('language', language)
           ..add('stargazersCount', stargazersCount)
+          ..add('url', url)
           ..add('owner', owner))
         .toString();
   }
@@ -174,6 +190,10 @@ class RepositoryBuilder implements Builder<Repository, RepositoryBuilder> {
   set stargazersCount(int stargazersCount) =>
       _$this._stargazersCount = stargazersCount;
 
+  String _url;
+  String get url => _$this._url;
+  set url(String url) => _$this._url = url;
+
   RepositoryOwnerBuilder _owner;
   RepositoryOwnerBuilder get owner =>
       _$this._owner ??= new RepositoryOwnerBuilder();
@@ -187,6 +207,7 @@ class RepositoryBuilder implements Builder<Repository, RepositoryBuilder> {
       _description = _$v.description;
       _language = _$v.language;
       _stargazersCount = _$v.stargazersCount;
+      _url = _$v.url;
       _owner = _$v.owner?.toBuilder();
       _$v = null;
     }
@@ -216,6 +237,7 @@ class RepositoryBuilder implements Builder<Repository, RepositoryBuilder> {
               description: description,
               language: language,
               stargazersCount: stargazersCount,
+              url: url,
               owner: owner.build());
     } catch (_) {
       String _$failedField;

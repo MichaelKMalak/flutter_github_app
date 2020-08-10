@@ -54,7 +54,10 @@ class RepositoryListView extends StatelessWidget {
         physics: const ClampingScrollPhysics(),
         itemCount: model.repositories.length,
         itemBuilder: (BuildContext context, int index) {
-          return RepositoryListItem(repository: model.repositories[index]);
+          return InkWell(
+            onTap: () => model.launchURL(index),
+            child: RepositoryListItem(repository: model.repositories[index]),
+          );
         });
   }
 }

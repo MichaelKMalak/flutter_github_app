@@ -42,6 +42,7 @@ Additional Features:
 - [x] As a User I could open the application from web.
 - [x] As a User I can switch to dark mode.
 - [x] As a User I should be able to see for each repo's programming language.
+- [x] As a User I can open a repository in browser by clicking on it.
 
 ### An alternative way to view this repository issues
 
@@ -135,6 +136,7 @@ The lib folder is divided into two folders. Core and ui. Core contains all the f
   - built_value: ^7.1.0
   - built_collection: ^4.3.2
   - loadmore: ^1.0.4
+  - url_launcher: ^5.5.0
   
 ## How to run ##
   - Run `flutter channel` and make sure you are on flutter's *stable channel*.
