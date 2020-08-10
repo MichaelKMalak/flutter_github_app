@@ -6,13 +6,13 @@ class AppLocalizations {
   AppLocalizations(this.localeName);
 
   static Future<AppLocalizations> load(Locale locale) {
-    String name = locale.toString();
+    var name = locale.toString();
     if (locale != null &&
         locale.countryCode != null &&
         locale.countryCode.isNotEmpty) {
       name = locale.languageCode;
     }
-    String localeName = Intl.canonicalizedLocale(name);
+    final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       return AppLocalizations(localeName);
     });

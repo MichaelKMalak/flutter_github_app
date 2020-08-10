@@ -14,6 +14,7 @@ analyzer:
     - build/**
     - lib/generated_plugin_registrant.dart
     - lib/**.g.dart
+    - lib/core/services/i18n/wrappers/**
 
 linter:
   rules:
