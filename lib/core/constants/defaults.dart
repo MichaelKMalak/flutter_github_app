@@ -10,5 +10,5 @@ class Defaults {
   ///slider in settings view
   static const double minSliderValue = 1;
   static const double maxSliderValue = 270;
-  static const int divisionSliderValue = 12;
+  static const int divisionSliderValue = 9;
 }
