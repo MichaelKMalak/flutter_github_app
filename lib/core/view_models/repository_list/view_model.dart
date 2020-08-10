@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:mobile_code_challenge_solution/core/models/repository/repository.dart';
 import 'package:mobile_code_challenge_solution/core/providers/get_repos/provider.dart';
 import 'package:mobile_code_challenge_solution/core/view_models/base/base.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RepositoryListViewModel extends BaseModel {
   RepositoryListViewModel({
@@ -35,6 +36,15 @@ class RepositoryListViewModel extends BaseModel {
       return true;
     } else {
       return false;
+    }
+  }
+
+  void launchURL(int index) async {
+    final url = repositories[index].url;
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
     }
   }
 }

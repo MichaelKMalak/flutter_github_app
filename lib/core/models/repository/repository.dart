@@ -23,6 +23,9 @@ abstract class Repository implements Built<Repository, RepositoryBuilder> {
   @BuiltValueField(wireName: 'stargazers_count')
   int get stargazersCount;
 
+  @BuiltValueField(wireName: 'html_url')
+  String get url;
+
   RepositoryOwner get owner;
 
   static Serializer<Repository> get serializer => _$repositorySerializer;
