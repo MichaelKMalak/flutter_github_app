@@ -14,10 +14,10 @@ class GetReposApi {
       response = await client.get(
         SearchEndpoint.search + searchFilter.toQueryStr(),
         options: Options(
-          headers: headersWithoutToken(),
+          headers: ApiConstants.headersWithoutToken(),
           contentType: 'application/json',
-          sendTimeout: sendTimeOut,
-          receiveTimeout: receiveTimeOut,
+          sendTimeout: ApiConstants.sendTimeOut,
+          receiveTimeout: ApiConstants.receiveTimeOut,
           responseType: ResponseType.bytes,
         ),
       );
