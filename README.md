@@ -4,7 +4,7 @@
 
 The task is to implement a small app that will list the most starred Github repos that were created in the last 30 days by fetching the sorted JSON data directly from the Github API. 
 
-The application is now deployed to github pages thanks to flutter! You can check it out [here](https://michaelkmalak.github.io/mobile-code-challenge-solution-flutter/)!
+The application is now deployed to github pages thanks to flutter! You can check it out [here](https://michaelkmalak.github.io/mobile-code-challenge-solution-flutter/).
 
 ## Screenshot
 <img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/assets/screenshots/Additions_1.png" width="350" />
