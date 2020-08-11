@@ -2,28 +2,24 @@
 
 [![Build and Test](https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/workflows/Build%20and%20Test/badge.svg)](https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/actions?query=workflow%3A%22Build+and+Test%22) <img src="https://img.shields.io/badge/made%20with-dart-blue.svg" alt="made with dart">
 
-This is a solution to the mobile code challenge by [gemography](https://www.gemography.com/). 
+The task is to implement a small app that will list the most starred Github repos that were created in the last 30 days by fetching the sorted JSON data directly from the Github API. 
+
+The application is now deployed to github pages thanks to flutter! You can check it out [here](https://michaelkmalak.github.io/mobile-code-challenge-solution-flutter/)!
 
 ## Screenshot
 <img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/assets/screenshots/Additions_1.png" width="350" />
 <img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/assets/screenshots/Additions_2.png" width="350" />
 
-## Check out the application without downloading!
-I deployed the application to github pages, and with the power of flutter, you can now check it on [web from here](https://michaelkmalak.github.io/mobile-code-challenge-solution-flutter/)!
-
 ## Repository branches
-* dev
+* [dev](https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/tree/dev)
     * The current tip-of-tree, absolute latest cutting edge build. 
-* master
+* [master](https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/tree/master)
     * The latest developed functional features.
-* master-friday-08072020
+* [master-friday-08072020](https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/tree/master-friday-08072020)
     * Last updated on Friday 08/07/2020 
     * Following the provided mock up design exactly
-* gh-pages
-    * This branch is opened to deploy to github pages
-        
-## About this project
-The task is to implement a small app that will list the most starred Github repos that were created in the last 30 days by fetching the sorted JSON data directly from the Github API.
+* [gh-pages](https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/tree/gh-pages)
+    * This branch is opened to deploy to github pages 
 
 ### What has been implemented
 The [basic features](https://github.com/gemography/mobile-coding-challenge) that are fulfilled include:
@@ -48,7 +44,7 @@ Additional Features:
 
 ### An alternative way to view this repository issues
 
-You can check the [milestones](https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/milestones) or the [project where issues' statuses are tracked](https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/projects/1).
+You can check the [milestones](https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/milestones) or the [project where issues are tracked](https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/projects/1).
 
 ## Folder Structure
 ```bash
@@ -67,7 +63,7 @@ You can check the [milestones](https://github.com/MichaelKMalak/mobile-code-chal
 ```
 
 ## Folder Structure explanation
-The lib folder is divided into two folders. Core and ui. Core contains all the files associated with the logic. ui contains all the files associated with the ui. 
+The lib folder is divided into three folders; core, ui, and config. Core contains all the files associated with the logic. Ui contains all the files associated with the ui. Config is for configirations.
 
 * core
     * constants 
@@ -120,15 +116,12 @@ The lib folder is divided into two folders. Core and ui. Core contains all the f
 
 ## Notes
 1. The api key is publicly available, so I didn't setup an env_secret for it.
-2. I tried to follow the provided mock up exactly so I didn't make any improvements in terms of UI design
 
 ## What could be improved?
 1. More Unit testing.
 2. Monitor internet connectivity.
 3. Cache repositories.
-4. View more repository details per row. (e.g. languages)
-5. Filter the repositories.
-6. Add some repositories to favorite list.
+4. Add some repositories to favorite list.
 
 ## Plugins used ##
   - intl: ^0.16.1 
@@ -142,29 +135,31 @@ The lib folder is divided into two folders. Core and ui. Core contains all the f
 
 ## Adding strings ##
    1- Add the new string to `lib/core/services/i18n.dart` in the following format:
-    ` String get newStringName {
+   
+    String get newStringName {
            return Intl.message(
              'New string goes here',
              name: 'newStringName',
              desc: 'Description for the new string',
              locale: localeName,
            );
-         }`
-        
+         }
+         
    2- Generate the translation file in JSON format (.arb extension) by running in the terminal:
-    `flutter pub run intl_translation:extract_to_arb -
-     -output-dir=lib/core/services/i18n/messages lib/core/services/i18n/i18n.dart`
+    
+    flutter pub run intl_translation:extract_to_arb -
+     -output-dir=lib/core/services/i18n/messages lib/core/services/i18n/i18n.dart
  
    3- Translate the generated strings from file `..services/i18n/messages/intl_messages.arb` in case you have multiple languages, and add the translations to files in the same folders with name similar to the locale it is translated to. Ex.: English translated file will be `intl_en.arb`
   
    4- Generate interface implementations from the translated files by running in the terminal:
-      `flutter pub run intl_translation:generate_from_ar
+      
+      flutter pub run intl_translation:generate_from_ar
        b --output-dir=lib/core/services/i18n/wrappers lib/core/services/i18n/i18n.dart lib/core/services/i1
        8n/messages/FILENAME_GOES_HERE.arb
-    `
     
 ## How to run ##
-  - Run `flutter channel` and make sure you are on flutter's *stable channel*.
+  - Run `flutter channel` and make sure you are on flutter's *beta channel*.
   - Run `flutter packages get` to download pubspec dependencies.
   - Run `flutter clean` for most of first run errors you may face.
   - Run `flutter test` to execute tests.
