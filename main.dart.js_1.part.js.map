@@ -1,0 +1,16 @@
+{
+  "version": 3,
+  "engine": "v2",
+  "file": "main.dart.js_1.part.js",
+  "sourceRoot": "",
+  "sources": ["/opt/hostedtoolcache/flutter/1.12.13-hotfix.6-beta/x64/.pub-cache/hosted/pub.dartlang.org/intl-0.16.1/lib/message_lookup_by_library.dart","../../../lib/core/services/i18n/wrappers/messages_en.dart"],
+  "names": ["MessageLookupByLibrary.simpleMessage","MessageLookup._notInlinedMessages","MessageLookup.localeName","MessageLookupByLibrary.simpleMessage.<anonymous function>","messages","MessageLookup",""],
+  "mappings": "A;0DAwIMA;GADqBA,YACrBA,kBAAsBA,C;kBClH0BC;IAA7CA,YAA0BA,uBACIA,+BACIA,oCACNA,8BACQA,kCACLA,0BACFA,wBACDA,sBACAA,0CACMA,8BACxCA,C;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAbUC,WAAcA,UAAIA,C;;;GDqHzBC,WAAMA,aAAgBA,C;;;;;;;;;;gBC1HtBC,kBAIAA,SAGaC,MAAoBA,SAPjCD,C",
+  "x_org_dartlang_dart2js": {
+    "minified_names": {
+      "global": "",
+      "instance": ""
+    },
+    "frames": "2iDCcqBMSAOFFe,A;"
+  }
+}
