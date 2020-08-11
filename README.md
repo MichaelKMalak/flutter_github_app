@@ -143,8 +143,9 @@ The lib folder is divided into three folders; core, ui, and config. Core contain
              desc: 'Description for the new string',
              locale: localeName,
            );
+
          }
-         
+
    2- Generate the translation file in JSON format (.arb extension) by running in the terminal:
     
     flutter pub run intl_translation:extract_to_arb -
@@ -153,9 +154,8 @@ The lib folder is divided into three folders; core, ui, and config. Core contain
    3- Translate the generated strings from file `..services/i18n/messages/intl_messages.arb` in case you have multiple languages, and add the translations to files in the same folders with name similar to the locale it is translated to. Ex.: English translated file will be `intl_en.arb`
   
    4- Generate interface implementations from the translated files by running in the terminal:
-      
-      flutter pub run intl_translation:generate_from_ar
-       b --output-dir=lib/core/services/i18n/wrappers lib/core/services/i18n/i18n.dart lib/core/services/i1
+
+      flutter pub run intl_translation:generate_from_arb --output-dir=lib/core/services/i18n/wrappers lib/core/services/i18n/i18n.dart lib/core/services/i1
        8n/messages/FILENAME_GOES_HERE.arb
     
 ## How to run ##
