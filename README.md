@@ -5,7 +5,7 @@
 This is a solution to the mobile code challenge by [gemography](https://www.gemography.com/). 
 
 ## Screenshot
-<img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master/screenshots/MVP_1.png" width="350" />
+<img src="https://github.com/MichaelKMalak/mobile-code-challenge-solution-flutter/blob/master-friday-08072020/screenshots/MVP_1.png" width="350" />
 
 
 ## Repository branches
